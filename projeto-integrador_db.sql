@@ -34,3 +34,8 @@ CREATE TABLE exame (
     num_exame INT() UNSIGNED NOT NULL;
     cod_paciente
 )
+
+
+
+
+ALTER TABLE usuario ADD FOREIGN KEY (id_curso) REFERENCES curso(id_curso);
