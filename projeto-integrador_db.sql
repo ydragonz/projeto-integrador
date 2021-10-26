@@ -39,3 +39,5 @@ CREATE TABLE exame (
 
 
 ALTER TABLE usuario ADD FOREIGN KEY (id_curso) REFERENCES curso(id_curso);
+ALTER TABLE exame ADD FOREIGN KEY (cod_paciente) REFERENCES usuario(cod_paciente);
+ALTER TABLE exame ADD FOREIGN KEY (cod_usuario) REFERENCES usuario(cod_usuario);
