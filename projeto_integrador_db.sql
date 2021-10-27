@@ -1,8 +1,11 @@
+CREATE DATABASE IF NOT EXISTS pi;
+
 DROP SCHEMA
 
 IF EXISTS pi;
     CREATE SCHEMA pi COLLATE = utf8_general_ci;
 USE pi;
+
 
 CREATE TABLE curso (
     id_curso INT AUTO_INCREMENT, 
