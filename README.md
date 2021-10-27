@@ -3,5 +3,5 @@ Repositório utilizado para trabalhar no Projeto Integrador da UNAERP da turma d
 
 Integrantes:
 -Leonardo Bernardes de Oliveira
--Sara Fernandes
--João Carneiro Cunha
+-Sara Ferreira Fernandes
+-João Carneiro da Cunha
