@@ -1,9 +1,5 @@
-CREATE DATABASE IF NOT EXISTS pi;
-
-
-IF EXISTS pi;
-    CREATE SCHEMA pi COLLATE = utf8_general_ci;
-USE pi;
+CREATE DATABASE IF NOT EXISTS pi_db;
+USE pi_db;
 
 
 CREATE TABLE curso (
