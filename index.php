@@ -22,6 +22,7 @@
         <meta name="description" content="Site desenvolvido para o Projeto Integrador da terceira etapa de Engenharia de Software da UNAERP de 2021/2">
         <meta name="author" content="Leonardo Bernardes de Oliveira, Sara Ferreira Fernandes e João Carneiro da Cunha">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+        <link href="css/dashboard.css" rel="stylesheet">
         <link rel="icon" href="images/unaerp_logo.jpg">
         <title>Bem-Estar no Shopping</title>
     </head>
@@ -56,5 +57,8 @@
             </main>
         </div>
     </div>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/feather.min.js"></script>
+    <script src="js/dashboard.js"></script>
     </body>
 </html>
