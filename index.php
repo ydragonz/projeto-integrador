@@ -23,13 +23,15 @@
         <meta name="author" content="Leonardo Bernardes de Oliveira, Sara Ferreira Fernandes e João Carneiro da Cunha">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
         <link href="css/dashboard.css" rel="stylesheet">
-        <link rel="icon" href="images/unaerp_logo.jpg">
+        <link rel="icon" href="imagens/unaerp_icon_mini.png">
         <title>Bem-Estar no Shopping</title>
+
+        
     </head>
     <body>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-1 me-0 px-3" href="#"><img src="images/teste.png" class=""> Bem-Estar</a>
+    <a class="navbar-brand col-md-3 col-lg-1 me-0 px-3" href="#"><img src="imagens/unaerp_icon.png" class=""> Bem-Estar</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

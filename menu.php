@@ -8,27 +8,21 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="regioes/index">
-            <span data-feather="map-pin"></span>
-            Regiões
+            <a class="nav-link text-white" href="?p=usuarios/index.php">
+            <span data-feather=""></span>
+            Usuários
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="?p=paises/index">
+            <a class="nav-link text-white" href="?p=pacientes/index.php">
             <span data-feather="globe"></span>
-            Países
+            Pacientes
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="locations/index">
+            <a class="nav-link text-white" href="?p=exames/index.php">
             <span data-feather="map"></span>
-            Localizações
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" href="?p=employees/employees">
-            <span data-feather="users"></span>
-            Funcionários
+            Exames
             </a>
         </li>
     </ul>
