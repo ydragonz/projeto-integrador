@@ -3,14 +3,14 @@ USE pi_db;
 
 
 CREATE TABLE curso (
-    id_curso INT(11) AUTO_INCREMENT, 
+    id_curso INT(4) AUTO_INCREMENT, 
     nom_curso VARCHAR(30) NOT NULL,
     PRIMARY KEY(id_curso)
 );
 
 CREATE TABLE usuario (
-    cod_usuario INT(11) AUTO_INCREMENT, 
-    id_curso INT(11) NOT NULL, 
+    cod_usuario INT(6) AUTO_INCREMENT, 
+    id_curso INT(4) NOT NULL, 
     nom_usuario VARCHAR(40) NOT NULL, 
     dtn_usuario DATE NOT NULL, 
     sen_usuario VARCHAR(10) NOT NULL, 
@@ -20,7 +20,7 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE paciente (
-    cod_paciente INT(11) AUTO_INCREMENT, 
+    cod_paciente INT(8) AUTO_INCREMENT, 
     nom_paciente VARCHAR(40) NOT NULL, 
     sex_paciente CHAR(1) NOT NULL, 
     end_paciente VARCHAR(40) NOT NULL, 
@@ -46,9 +46,9 @@ CREATE TABLE paciente (
 );
 
 CREATE TABLE exame (
-    num_exame INT(11) AUTO_INCREMENT,
-    cod_paciente INT(11) NOT NULL,
-    cod_usuario INT(11) NOT NULL,
+    num_exame INT(10) AUTO_INCREMENT,
+    cod_paciente INT(8) NOT NULL,
+    cod_usuario INT(6) NOT NULL,
     dta_exame DATE NOT NULL,
     pad_exame INT(11) NOT NULL,
     pas_exame INT(11) NOT NULL,
