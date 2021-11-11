@@ -25,7 +25,7 @@ CREATE TABLE pacientes (
     sex_paciente CHAR(1) NOT NULL, 
     end_paciente VARCHAR(40) NOT NULL, 
     bai_paciente VARCHAR(25) NOT NULL, 
-    com_paciente VARCHAR(15) NOT NULL, 
+    com_paciente VARCHAR(15), 
     cep_paciente VARCHAR(8) NOT NULL,  
     cid_paciente VARCHAR(35) NOT NULL,
     uf_paciente VARCHAR(2) NOT NULL, 
