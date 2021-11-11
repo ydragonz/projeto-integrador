@@ -25,7 +25,7 @@ if($res->num_rows>0){
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">#</th>
+                <th scope="col">Código</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Curso</th>
                 <th scope="col">Data de nascimento</th>
