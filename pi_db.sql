@@ -30,8 +30,8 @@ CREATE TABLE pacientes (
     cid_paciente VARCHAR(35) NOT NULL,
     uf_paciente VARCHAR(2) NOT NULL, 
     dtn_paciente DATE NOT NULL, 
-    fone_paciente VARCHAR(10) NOT NULL, 
-    email_paciente VARCHAR(50) NOT NULL, 
+    fone_paciente VARCHAR(10), 
+    email_paciente VARCHAR(50), 
     pes_paciente NUMERIC(4,1) NOT NULL,  
     alt_paciente NUMERIC(3,2) NOT NULL, 
     fuma_paciente TINYINT(1) NOT NULL, 
@@ -39,9 +39,9 @@ CREATE TABLE pacientes (
     hiper_paciente TINYINT(1) NOT NULL, 
     diab_paciente TINYINT(1) NOT NULL, 
     dac_paciente TINYINT(1) NOT NULL, 
-    doe_paciente VARCHAR(100) NOT NULL, 
+    doe_paciente VARCHAR(100), 
     med_paciente TINYINT(1) NOT NULL, 
-    rem_paciente VARCHAR(100) NOT NULL,
+    rem_paciente VARCHAR(100),
     PRIMARY KEY(cod_paciente)
 );
 
