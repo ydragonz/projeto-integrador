@@ -2,13 +2,13 @@ CREATE DATABASE IF NOT EXISTS pi_db;
 USE pi_db;
 
 
-CREATE TABLE curso (
+CREATE TABLE cursos (
     id_curso INT(4) AUTO_INCREMENT, 
     nom_curso VARCHAR(30) NOT NULL,
     PRIMARY KEY(id_curso)
 );
 
-CREATE TABLE usuario (
+CREATE TABLE usuarios (
     cod_usuario INT(6) AUTO_INCREMENT, 
     id_curso INT(4) NOT NULL, 
     nom_usuario VARCHAR(40) NOT NULL, 
@@ -19,7 +19,7 @@ CREATE TABLE usuario (
     PRIMARY KEY(cod_usuario)
 );
 
-CREATE TABLE paciente (
+CREATE TABLE pacientes (
     cod_paciente INT(8) AUTO_INCREMENT, 
     nom_paciente VARCHAR(40) NOT NULL, 
     sex_paciente CHAR(1) NOT NULL, 
@@ -45,7 +45,7 @@ CREATE TABLE paciente (
     PRIMARY KEY(cod_paciente)
 );
 
-CREATE TABLE exame (
+CREATE TABLE exames (
     num_exame INT(10) AUTO_INCREMENT,
     cod_paciente INT(8) NOT NULL,
     cod_usuario INT(6) NOT NULL,
@@ -57,6 +57,6 @@ CREATE TABLE exame (
     PRIMARY KEY(num_exame)
 );
 
-ALTER TABLE usuario ADD FOREIGN KEY (id_curso) REFERENCES curso(id_curso);
-ALTER TABLE exame ADD FOREIGN KEY (cod_paciente) REFERENCES paciente(cod_paciente);
-ALTER TABLE exame ADD FOREIGN KEY (cod_usuario) REFERENCES usuario(cod_usuario);
+ALTER TABLE usuarios ADD FOREIGN KEY (id_curso) REFERENCES cursos(id_curso);
+ALTER TABLE exames ADD FOREIGN KEY (cod_paciente) REFERENCES pacientes(cod_paciente);
+ALTER TABLE exames ADD FOREIGN KEY (cod_usuario) REFERENCES usuarios(cod_usuario);
