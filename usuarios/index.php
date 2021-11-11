@@ -9,13 +9,13 @@ if($con->connect_error){
     die("Erro na conexão: ".$con->connect_error);
 }
 
-$sql = "select * from curso order by nom_curso";  //testando
+$sql = "select * from usuarios order by nom_usuario";  //testando
 $res = $con->query($sql);
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Usuários</h1>
-    <a href="index.php?p=paises/new" type="button" class="btn btn-primary">Inserir</a>
+    <a href="index.php?p=usuarios/new" type="button" class="btn btn-primary">Cadastrar</a>
 </div>
 
 <?php
@@ -27,6 +27,11 @@ if($res->num_rows>0){
                 <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Data de nascimento</th>
+                <th scope="col">Per??</th>
+                <th scope="col">Status</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -35,9 +40,12 @@ if($res->num_rows>0){
                 //percorrer o array de resultados
                 while($row = $res->fetch_assoc()){
                     echo "<tr>
-                        <td>".$row['cod_curso']."</td>
-                        <td>".$row['nom_curso']."</td></tr>";
-                        <td><a href='index.php?p=usuarios/edit&id=".$row['country_id']."' class='btn btn-success btn-sm'>Editar</a></td></tr>";
+                        <td>".$row['cod_usuario']."</td>
+                        <td>".$row['nom_usuario']."</td>
+                        <td>".$row['nom_curso']."</td>  // Nome do curso da tabela cursos
+                        <td>".$row['dtn_usuario']."</td>
+                        <td>".$row['per_usuario']."</td>  // Nao sei o que significa
+                        <td>".$row['sts_usuario']."</td></tr>";
                 }
                 ?>
             
