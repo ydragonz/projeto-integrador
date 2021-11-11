@@ -47,7 +47,7 @@ if($res->num_rows>0){
 <?php
 }
 else {
-    echo "Não foram encontrados dados.";
+    echo "Não foram encontrados dados nesta tabela.";
 }
 $con->close();
 
