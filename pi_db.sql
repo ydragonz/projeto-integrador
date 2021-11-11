@@ -10,7 +10,7 @@ CREATE TABLE cursos (
 
 CREATE TABLE usuarios (
     cod_usuario INT(6) AUTO_INCREMENT, 
-    id_curso INT(4) NOT NULL, 
+    id_curso INT(4), 
     nom_usuario VARCHAR(40) NOT NULL, 
     dtn_usuario DATE NOT NULL, 
     sen_usuario VARCHAR(10) NOT NULL, 
@@ -47,8 +47,8 @@ CREATE TABLE pacientes (
 
 CREATE TABLE exames (
     num_exame INT(10) AUTO_INCREMENT,
-    cod_paciente INT(8) NOT NULL,
-    cod_usuario INT(6) NOT NULL,
+    cod_paciente INT(8),
+    cod_usuario INT(6),
     dta_exame DATE NOT NULL,
     pad_exame INT(11) NOT NULL,
     pas_exame INT(11) NOT NULL,
