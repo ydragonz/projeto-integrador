@@ -7,7 +7,7 @@ if($con->connect_error){
     die("Erro na conexão: ".$con->connect_error);
 }
 
-$sql = "select * from usuarios order by nom_usuario";  //testando
+$sql = "select * from exames order by num_exame";  //testando
 $res = $con->query($sql);
 ?>
 
@@ -23,25 +23,14 @@ if($res->num_rows>0){
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">Código</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Curso</th>
-                <th scope="col">Data de nascimento</th>
-                <th scope="col">Per??</th>
-                <th scope="col">Status</th>
+                
                 </tr>
             </thead>
             <tbody>
 
                 <?php
                 while($row = $res->fetch_assoc()){
-                    echo "<tr>
-                        <td>".$row['cod_usuario']."</td>
-                        <td>".$row['nom_usuario']."</td>
-                        <td>".$row['id_curso']."</td>
-                        <td>".$row['dtn_usuario']."</td>
-                        <td>".$row['per_usuario']."</td> 
-                        <td>".$row['sts_usuario']."</td></tr>";
+                    
                 }
                 ?>
             
