@@ -15,7 +15,7 @@ $res = $con->query($sql);
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Usuários</h1>
-    <a href="index.php?p=usuarios/new" type="button" class="btn btn-primary">Cadastrar</a>
+    <a href="index.php?p=usuarios/new.php" type="button" class="btn btn-primary">Cadastrar</a>
 </div>
 
 <?php
@@ -31,13 +31,11 @@ if($res->num_rows>0){
                 <th scope="col">Data de nascimento</th>
                 <th scope="col">Per??</th>
                 <th scope="col">Status</th>
-
                 </tr>
             </thead>
             <tbody>
 
                 <?php
-                //percorrer o array de resultados
                 while($row = $res->fetch_assoc()){
                     echo "<tr>
                         <td>".$row['cod_usuario']."</td>
