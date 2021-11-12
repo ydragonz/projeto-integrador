@@ -1,5 +1,3 @@
-<p>Voce esta na pagina usuarios</p>
-
 <?php
 include('config.php');
 
