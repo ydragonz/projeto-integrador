@@ -18,7 +18,7 @@ if($res->num_rows>0){
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                <th scope="col">#</th>
+                <th scope="col">Código</th>
                 <th scope="col">Nome</th>
                 </tr>
             </thead>
@@ -28,7 +28,7 @@ if($res->num_rows>0){
                 //percorrer o array de resultados
                 while($row = $res->fetch_assoc()){
                     echo "<tr>
-                        <td>".$row['cod_curso']."</td>
+                        <td>".$row['id_curso']."</td>
                         <td>".$row['nom_curso']."</td></tr>";
                 }
                 ?>
