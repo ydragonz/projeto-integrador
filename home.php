@@ -6,3 +6,4 @@ do interior paulista, sendo realizados exames de glicemia, colesterol e aferiç�
 pressão arterial, assim como a coleta de dados referentes à saúde dos participantes.</p>
 
 <img src="imagens/stock_measuring_preasure_image.jpg" class="img-fluid" alt="Imagem de uma doutora medindo a pressão de um paciente.">
+<! --- LEMBRAR DE DAR OS CREDITOS DA IMAGEM --->
