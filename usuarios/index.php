@@ -40,7 +40,7 @@ if($res->num_rows>0){
                     echo "<tr>
                         <td>".$row['cod_usuario']."</td>
                         <td>".$row['nom_usuario']."</td>
-                        <td>".$row['nom_curso']."</td>  // Nome do curso da tabela cursos
+                        <td>".$row['id_curso']."</td>  // Nome do curso da tabela cursos
                         <td>".$row['dtn_usuario']."</td>
                         <td>".$row['per_usuario']."</td>  // Nao sei o que significa
                         <td>".$row['sts_usuario']."</td></tr>";
