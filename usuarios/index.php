@@ -7,7 +7,7 @@ if($con->connect_error){
     die("Erro na conexão: ".$con->connect_error);
 }
 
-$sql = "select * from usuarios order by nom_usuario";  //testando
+$sql = "select * from usuarios,cursos order by nom_usuario";  //testando
 $res = $con->query($sql);
 ?>
 
@@ -38,7 +38,7 @@ if($res->num_rows>0){
                     echo "<tr>
                         <td>".$row['cod_usuario']."</td>
                         <td>".$row['nom_usuario']."</td>
-                        <td>".$row['id_curso']."</td>
+                        <td>".$row['nom_curso']."</td>
                         <td>".$row['dtn_usuario']."</td>
                         <td>".$row['per_usuario']."</td> 
                         <td>".$row['sts_usuario']."</td></tr>";
