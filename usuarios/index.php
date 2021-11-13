@@ -27,7 +27,7 @@ if($res->num_rows>0){
                 <th scope="col">Nome</th>
                 <th scope="col">Curso</th>
                 <th scope="col">Data de nascimento</th>
-                <th scope="col">Per??</th>
+                <th scope="col">Administrativo</th>
                 <th scope="col">Status</th>
                 </tr>
             </thead>

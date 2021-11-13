@@ -14,7 +14,7 @@ CREATE TABLE usuarios (
     nom_usuario VARCHAR(40) NOT NULL, 
     dtn_usuario DATE NOT NULL, 
     sen_usuario VARCHAR(10) NOT NULL, 
-    per_usuario INT(11) NOT NULL, 
+    per_usuario TINYINT(1) NOT NULL, 
     sts_usuario TINYINT(1) NOT NULL,
     PRIMARY KEY(cod_usuario)
 );
