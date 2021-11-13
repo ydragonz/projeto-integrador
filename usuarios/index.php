@@ -7,7 +7,7 @@ if($con->connect_error){
     die("Erro na conexão: ".$con->connect_error);
 }
 
-$sql = "select * from usuarios,cursos order by nom_usuario";  //testando
+$sql = "SELECT * FROM usuarios u INNER JOIN cursos c ON u.id_curso=c.id_curso";  //testando order by nom_usuario
 $res = $con->query($sql);
 ?>
 
