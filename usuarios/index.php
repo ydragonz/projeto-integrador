@@ -27,21 +27,36 @@ if($res->num_rows>0){
                 <th scope="col">Nome</th>
                 <th scope="col">Curso</th>
                 <th scope="col">Data de nascimento</th>
-                <th scope="col">Administrativo</th>
+                <th scope="col">Cargo</th>
                 <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
 
                 <?php
+                //<td>".$row['sts_usuario']."</td></tr>";
                 while($row = $res->fetch_assoc()){
+                    $status="";
+                    $adm="";
+                    if($row['sts_usuario']==1) {
+                        $status="Ativo";
+                    }
+                    else {
+                        $status="Inativo";
+                    }
+                    if($row['per_usuario']==1) {
+                        $adm="Administrador";
+                    }
+                    else {
+                        $adm="Comum";
+                    }
                     echo "<tr>
                         <td>".$row['cod_usuario']."</td>
                         <td>".$row['nom_usuario']."</td>
                         <td>".$row['nom_curso']."</td>
                         <td>".$row['dtn_usuario']."</td>
-                        <td>".$row['per_usuario']."</td> 
-                        <td>".$row['sts_usuario']."</td></tr>";
+                        <td>".$adm."</td>
+                        <td>".$status."</td></tr>";  
                 }
                 ?>
             
