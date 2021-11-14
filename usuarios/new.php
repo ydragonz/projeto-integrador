@@ -12,7 +12,6 @@
         else {
           $id_curso = $_POST['id_curso'];
           $nom_usuario = $_POST['nom_usuario'];
-
           $dtn_usuario = date('y-m-d', strtotime($_POST['dtn_usuario']));
           $sen_usuario = $_POST['sen_usuario'];
           $per_usuario = $_POST['per_usuario'];
@@ -23,8 +22,10 @@
             ?>
             <div class="alert alert-success" role="alert">
                 Novo usuário criado com sucesso!
+                
             </div>
             <?php
+            //header("Location: index.php?p=usuarios/index.php");
           }
           else {
             ?>
@@ -38,13 +39,13 @@
         }
     }
 
-
+    
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Novo usuário</h1>
 </div>
-<form method="post" action="usuarios/new.php">
+<form action="usuarios/new.php" method="post">
   <div class="mb-3">
     <label for="id_curso" class="form-label">ID curso</label>
     <input type="text" class="form-control" id="id_curso" name="id_curso">
@@ -69,14 +70,14 @@
   </div>
   <div class="mb-3">
     <label for="per_usuario" class="form-label">Cargo</label>
-    <select class="form-select" aria-label="Default select example">
+    <select class="form-select" id="per_usuario" name="per_usuario">
         <option selected value="0">Comum</option>
         <option value="1">Administrador</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="sts_usuario" class="form-label">Status</label>
-    <select class="form-select" aria-label="Default select example">
+    <select class="form-select" id="sts_usuario" name="sts_usuario">
         <option selected value="0">Inativo</option>
         <option value="1">Ativo</option>
     </select>
