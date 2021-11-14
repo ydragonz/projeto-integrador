@@ -25,8 +25,6 @@
         <link href="css/dashboard.css" rel="stylesheet">
         <link rel="icon" href="imagens/unaerp_icon_mini.png">
         <title>Bem-Estar no Shopping</title>
-
-        
     </head>
     <body>
 

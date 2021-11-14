@@ -7,7 +7,7 @@ if($con->connect_error){
     die("Erro na conexão: ".$con->connect_error);
 }
 
-$sql = "SELECT * FROM usuarios u INNER JOIN cursos c ON u.id_curso=c.id_curso";  //testando order by nom_usuario
+$sql = "SELECT * FROM usuarios u INNER JOIN cursos c ON u.id_curso=c.id_curso ORDER BY cod_usuario";  //testando order by nom_usuario
 $res = $con->query($sql);
 ?>
 
@@ -34,7 +34,6 @@ if($res->num_rows>0){
             <tbody>
 
                 <?php
-                //<td>".$row['sts_usuario']."</td></tr>";
                 while($row = $res->fetch_assoc()){
                     $status="";
                     $adm="";

@@ -1,7 +1,7 @@
 <?php
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        include('config.php');
+        include('../config.php');
 
         //verificar a conexão
         $conn = new mysqli($host, $user, $password, $dbname);
@@ -10,22 +10,37 @@
             die("Erro de conexão: ".$conn->connect_error);
         }
         else {
-          $country_id = $_POST['cod_usuario'];
-          $country_name = $_POST['country_name'];
-          $region_id = $_POST['region_id'];
+          $id_curso = $_POST['id_curso'];
+          $nom_usuario = $_POST['nom_usuario'];
 
-          $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, dtn_usuario, sen_usuario, per_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario'dtn_usuario sen_usuario per_usuario sts_usuario)";
+          $dtn_usuario = date('y-m-d', strtotime($_POST['dtn_usuario']));
+          $sen_usuario = $_POST['sen_usuario'];
+          $per_usuario = $_POST['per_usuario'];
+          $sts_usuario = $_POST['sts_usuario'];
+
+          $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, dtn_usuario, sen_usuario, per_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', 'dtn_usuario', 'sen_usuario', 'per_usuario', 'sts_usuario')";
           if($conn->query($sql) === TRUE) {
-            echo "Novo registro inserido.";
+            ?>
+            <div class="alert alert-success" role="alert">
+                Novo usuário criado com sucesso!
+            </div>
+            <?php
           }
           else {
-              echo "Falha: ".$sql."\n".$conn->error;
+            ?>
+            <div class="alert alert-danger" role="alert">
+                <?php
+                echo "Falha: ".$sql."\n".$conn->error;
+                ?>
+            </div>
+            <?php
           }
         }
     }
 
 
 ?>
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Novo usuário</h1>
 </div>
@@ -33,18 +48,40 @@
   <div class="mb-3">
     <label for="id_curso" class="form-label">ID curso</label>
     <input type="text" class="form-control" id="id_curso" name="id_curso">
-    <div id="passwordHelpBlock" class="form-text">
+    <div id="helpIdCurso" class="form-text">
         O ID do curso realizado pelo usuário.
     </div>
   </div>
   <div class="mb-3">
-    <label for="country_name" class="form-label">Nome</label>
-    <input type="text" class="form-control" id="country_name" name="country_name">
+    <label for="nom_usuario" class="form-label">Nome do usuário</label>
+    <input type="text" class="form-control" id="nom_usuario" name="nom_usuario">
   </div>
   <div class="mb-3">
-    <label for="region_id" class="form-label">Região</label>
-    <input type="text" class="form-control" id="region_id" name="region_id">
+    <label for="dtn_usuario" class="form-label">Data de nascimento</label>
+        <input type="date" class="form-control" id="dtn_usuario" name="dtn_usuario">
+  </div>
+  <div class="mb-3">
+    <label for="sen_usuario" class="form-label">Senha</label>
+    <input type="password" class="form-control" id="sen_usuario" name="sen_usuario">
+    <div id="helpNomeUsuario" class="form-text">
+        Lembre-se de não compartilhar com ninguém.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="per_usuario" class="form-label">Cargo</label>
+    <select class="form-select" aria-label="Default select example">
+        <option selected value="0">Comum</option>
+        <option value="1">Administrador</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="sts_usuario" class="form-label">Status</label>
+    <select class="form-select" aria-label="Default select example">
+        <option selected value="0">Inativo</option>
+        <option value="1">Ativo</option>
+    </select>
   </div>
 
   <button type="submit" class="btn btn-primary">Inserir</button>
+  <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Cancelar</a>
 </form>
