@@ -1,7 +1,7 @@
 <?php
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include('config.php');
+    include('../config.php');
 
     //verificar a conexão
     $conn = new mysqli($host, $user, $password, $dbname);
@@ -12,18 +12,19 @@
     else {
       $id_curso = $_POST['id_curso'];
       $nom_usuario = $_POST['nom_usuario'];
-      $dtn_usuario = date('y-m-d', strtotime($_POST['dtn_usuario']));
+      $dtn_usuario = date('Y-m-d', strtotime($_POST['dtn_usuario']));
       $sen_usuario = $_POST['sen_usuario'];
       $per_usuario = $_POST['per_usuario'];
       $sts_usuario = $_POST['sts_usuario'];
 
-      $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, dtn_usuario, sen_usuario, per_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', 'dtn_usuario', 'sen_usuario', 'per_usuario', 'sts_usuario')";
+      $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, dtn_usuario, sen_usuario, per_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', '$dtn_usuario', '$sen_usuario', '$per_usuario', '$sts_usuario')";
       if($conn->query($sql) === TRUE) {
         ?>
         <div class="alert alert-success" role="alert">
           Usuário criado com sucesso!
         </div>
         <?php
+        //header('Location: index.php');
       }
       else {
         ?>
@@ -36,8 +37,7 @@
       }
     }
   }
-
-    
+  if(!isset($_POST["id_curso"])) {
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -80,7 +80,9 @@
         <option value="1">Ativo</option>
     </select>
   </div>
-
+  
   <button type="submit" class="btn btn-primary">Inserir</button>
   <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Cancelar</a>
 </form>
+
+  <?php } ?>

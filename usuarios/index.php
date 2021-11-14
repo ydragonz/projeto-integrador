@@ -1,14 +1,14 @@
 <?php
 include('config.php');
 
-$con = new mysqli($host, $user, $password, $dbname);
+$conn = new mysqli($host, $user, $password, $dbname);
 
-if($con->connect_error){
-    die("Erro na conexão: ".$con->connect_error);
+if($conn->connect_error){
+    die("Erro na conexão: ".$conn->connect_error);
 }
 
 $sql = "SELECT * FROM usuarios u INNER JOIN cursos c ON u.id_curso=c.id_curso ORDER BY cod_usuario";  //testando order by nom_usuario
-$res = $con->query($sql);
+$res = $conn->query($sql);
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -76,6 +76,6 @@ else {
     </div>
     <?php
 }
-$con->close();
+$conn->close();
 
 ?>
