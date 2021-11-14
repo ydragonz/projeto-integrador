@@ -1,43 +1,41 @@
 <?php
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        include('../config.php');
+  if($_SERVER["REQUEST_METHOD"] == "POST"){
+    include('config.php');
 
-        //verificar a conexão
-        $conn = new mysqli($host, $user, $password, $dbname);
+    //verificar a conexão
+    $conn = new mysqli($host, $user, $password, $dbname);
     
-        if($conn->connect_error){
-            die("Erro de conexão: ".$conn->connect_error);
-        }
-        else {
-          $id_curso = $_POST['id_curso'];
-          $nom_usuario = $_POST['nom_usuario'];
-          $dtn_usuario = date('y-m-d', strtotime($_POST['dtn_usuario']));
-          $sen_usuario = $_POST['sen_usuario'];
-          $per_usuario = $_POST['per_usuario'];
-          $sts_usuario = $_POST['sts_usuario'];
-
-          $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, dtn_usuario, sen_usuario, per_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', 'dtn_usuario', 'sen_usuario', 'per_usuario', 'sts_usuario')";
-          if($conn->query($sql) === TRUE) {
-            ?>
-            <div class="alert alert-success" role="alert">
-                Novo usuário criado com sucesso!
-                
-            </div>
-            <?php
-            //header("Location: index.php?p=usuarios/index.php");
-          }
-          else {
-            ?>
-            <div class="alert alert-danger" role="alert">
-                <?php
-                echo "Falha: ".$sql."\n".$conn->error;
-                ?>
-            </div>
-            <?php
-          }
-        }
+    if($conn->connect_error){
+      die("Erro de conexão: ".$conn->connect_error);
     }
+    else {
+      $id_curso = $_POST['id_curso'];
+      $nom_usuario = $_POST['nom_usuario'];
+      $dtn_usuario = date('y-m-d', strtotime($_POST['dtn_usuario']));
+      $sen_usuario = $_POST['sen_usuario'];
+      $per_usuario = $_POST['per_usuario'];
+      $sts_usuario = $_POST['sts_usuario'];
+
+      $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, dtn_usuario, sen_usuario, per_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', 'dtn_usuario', 'sen_usuario', 'per_usuario', 'sts_usuario')";
+      if($conn->query($sql) === TRUE) {
+        ?>
+        <div class="alert alert-success" role="alert">
+          Usuário criado com sucesso!
+        </div>
+        <?php
+      }
+      else {
+        ?>
+        <div class="alert alert-danger" role="alert">
+          <?php
+          echo "Falha: ".$sql."\n".$conn->error;
+          ?>
+        </div>
+        <?php
+      }
+    }
+  }
 
     
 ?>
