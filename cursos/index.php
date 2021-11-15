@@ -7,13 +7,13 @@ if($con->connect_error){
     die("Erro na conexão: ".$con->connect_error);
 }
 
-$sql = "select * from exames order by num_exame";  //testando
+$sql = "select * from cursos order by id_curso";
 $res = $con->query($sql);
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Exames</h1>
-    <a href="index.php?p=usuarios/new.php" type="button" class="btn btn-primary">Cadastrar</a>
+    <h1 class="h2">Cursos</h1>
+    <a href="index.php?p=cursos/new.php" type="button" class="btn btn-success">Cadastrar</a>
 </div>
 
 <?php
@@ -21,16 +21,21 @@ if($res->num_rows>0){
     ?>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
-            <thead>
+        <thead>
                 <tr>
-                
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
                 </tr>
             </thead>
             <tbody>
 
                 <?php
                 while($row = $res->fetch_assoc()){
-                    
+                    echo "<tr>
+                        <td>".$row['id_curso']."</td>
+                        <td>".$row['nom_curso']."</td>
+                        <td><a href='index.php?p=cursos/edit.php&id=".$row['id_curso']."' class='btn btn-primary btn-sm'>Editar</a>
+                        <a href='index.php?p=cursos/detalhes.php&id=".$row['id_curso']."' class='btn btn-danger btn-sm'>Excluir</a></tr>";
                 }
                 ?>
             

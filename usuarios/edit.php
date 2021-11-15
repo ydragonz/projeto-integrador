@@ -11,13 +11,24 @@
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
           ?>
+          
           <div class="alert alert-success" role="alert">
             <h1>Usuário editado com sucesso!</h1>
-            volte para a página anterior
+            volte para a página anterior e atualize a página.
           </div>
           <?php
         }
         else {
+            if($_GET['id']) {
+              $id = $_GET['id'];
+              $sql = "select * from usuarios where cod_usuario = ?";
+              $stmt = $conn->prepare($sql);
+              $stmt->bind_param("s", $id);
+              $stmt->execute();
+              $result = $stmt->get_result();
+            
+              $dados = $result->fetch_row() ;
+            }
             $id = $_GET['id'];
             $sql = "select * from usuarios where cod_usuario = ?";
             $stmt = $conn->prepare($sql);
@@ -82,7 +93,7 @@
       </select>
   </div>
 
-  <button type="submit" class="btn btn-primary">Salvar</button>
+  <button type="submit" class="btn btn-success">Salvar</button>
   <?php echo "<td><a href='index.php?p=usuarios/detalhes.php&id=".$dados[0]."' class='btn btn-secondary'>Cancelar</a></tr>" ?>
 </form
 

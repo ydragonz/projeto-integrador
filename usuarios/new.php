@@ -22,7 +22,7 @@
         ?>
         <div class="alert alert-success" role="alert">
           <h1>Usuário criado com sucesso!</h1>
-          volte para a página anterior
+          volte para a página anterior e atualize a página.
         </div>
         <?php
       }
