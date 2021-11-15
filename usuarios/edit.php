@@ -19,16 +19,6 @@
           <?php
         }
         else {
-            if($_GET['id']) {
-              $id = $_GET['id'];
-              $sql = "select * from usuarios where cod_usuario = ?";
-              $stmt = $conn->prepare($sql);
-              $stmt->bind_param("s", $id);
-              $stmt->execute();
-              $result = $stmt->get_result();
-            
-              $dados = $result->fetch_row() ;
-            }
             $id = $_GET['id'];
             $sql = "select * from usuarios where cod_usuario = ?";
             $stmt = $conn->prepare($sql);
