@@ -72,7 +72,6 @@
     </select>
   </div>
   <?php echo "<td><a href='index.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr>";
-  echo "<td><a href='index.php?p=usuarios/edit.php&id_del=".$dados[0]."' class='btn btn-primary'>Excluir</a></tr>"; ?>
-  <button type="submit" class="btn btn-danger">Excluir</button>
+  echo "<td><a href='index.php?p=usuarios/edit.php&id_del=".$dados[0]."' class='btn btn-danger'>Excluir</a></tr>"; ?>
   <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Voltar</a>
 </form>
