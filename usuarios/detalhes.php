@@ -25,10 +25,11 @@
 
 ?>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Editando usuário</h1>
+    <h1 class="h2">Visualizando usuário</h1>
 </div>
 <form method="post" action="usuarios/edit.php">
 <div class="mb-3">
+  <div class="mb-3">
     <label class="form-label">ID usuário</label>
     <input type="text" class="form-control" value="<?=$dados[0];?>" disabled>
     <div id="helpIdCurso" class="form-text">
@@ -70,7 +71,7 @@
         <option value="1">Ativo</option>
     </select>
   </div>
-
-  <button type="submit" class="btn btn-primary">Editar</button>
-  <button type="submit" class="btn btn-danger">Apagar</button>
+<?php echo "<td><a href='index.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr>" ?>
+  <button type="submit" class="btn btn-danger">Excluir</button>
+  <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Voltar</a>
 </form>

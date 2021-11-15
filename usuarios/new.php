@@ -21,10 +21,10 @@
       if($conn->query($sql) === TRUE) {
         ?>
         <div class="alert alert-success" role="alert">
-          Usuário criado com sucesso!
+          <h1>Usuário criado com sucesso!</h1>
+          volte para a página anterior
         </div>
         <?php
-        //header('Location: index.php');
       }
       else {
         ?>
@@ -45,10 +45,17 @@
 </div>
 <form action="usuarios/new.php" method="post">
   <div class="mb-3">
+    <label class="form-label">ID usuário</label>
+    <input type="text" class="form-control" disabled>
+    <div id="helpIdCurso" class="form-text">
+        O ID do usuário é gerado automaticamente pelo sistema.
+    </div>
+  </div>
+  <div class="mb-3">
     <label for="id_curso" class="form-label">ID curso</label>
     <input type="text" class="form-control" id="id_curso" name="id_curso">
     <div id="helpIdCurso" class="form-text">
-        O ID do curso realizado pelo usuário.
+        O ID do curso realizado pelo usuário, em caso de dúvidas consultar a página de cursos.
     </div>
   </div>
   <div class="mb-3">
@@ -80,9 +87,8 @@
         <option value="1">Ativo</option>
     </select>
   </div>
-  
-  <button type="submit" class="btn btn-primary">Inserir</button>
-  <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Cancelar</a>
+  <button type="submit" class="btn btn-success">Cadastrar</button>
+  <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Voltar</a>
 </form>
 
-  <?php } ?>
+<?php } ?>

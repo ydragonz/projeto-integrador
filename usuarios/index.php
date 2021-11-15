@@ -13,7 +13,7 @@ $res = $conn->query($sql);
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Usuários</h1>
-    <a href="index.php?p=usuarios/new.php" type="button" class="btn btn-primary">Cadastrar</a>
+    <a href="index.php?p=usuarios/new.php" type="button" class="btn btn-success">Cadastrar</a>
 </div>
 
 <?php
@@ -55,7 +55,8 @@ if($res->num_rows>0){
                         <td>".$row['nom_curso']."</td>
                         <td>".$row['dtn_usuario']."</td>
                         <td>".$adm."</td>
-                        <td>".$status."</td></tr>";  
+                        <td>".$status."</td>
+                        <td><a href='index.php?p=usuarios/detalhes.php&id=".$row['cod_usuario']."' class='btn btn-primary btn-sm'>Detalhes</a></tr>"; // revisar
                 }
                 ?>
             
