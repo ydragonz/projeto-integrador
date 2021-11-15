@@ -39,7 +39,7 @@
     <label for="id_curso" class="form-label">ID curso</label>
     <input type="text" class="form-control" id="id_curso" name="id_curso" value="<?=$dados[1];?>" disabled>
     <div id="helpIdCurso" class="form-text">
-        O ID do curso realizado pelo usuário.
+        O ID do curso realizado pelo usuário, em caso de duvidas consultar a página de cursos.
     </div>
   </div>
   <div class="mb-3">
