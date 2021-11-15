@@ -7,31 +7,30 @@
     }
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
+
         }
         else {
-            $id = $_GET['id'];
-            $sql = "select * from usuarios where cod_usuario = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $id);
-            $stmt->execute();
-            $result = $stmt->get_result();
+          $id = $_GET['id'];
+          $sql = "select * from usuarios where cod_usuario = ?";
+          $stmt = $conn->prepare($sql);
+          $stmt->bind_param("s", $id);
+          $stmt->execute();
+          $result = $stmt->get_result();
             
-            $dados = $result->fetch_row() ;
+          $dados = $result->fetch_row() ;
             
         }
 
     }
-
-
 ?>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Visualizando usuário</h1>
 </div>
-<form method="post" action="usuarios/edit.php">
+<form method="post" action="index.php?p=usuarios/detalhes.php">
 <div class="mb-3">
   <div class="mb-3">
     <label class="form-label">ID usuário</label>
-    <input type="text" class="form-control" value="<?=$dados[0];?>" disabled>
+    <input type="text" class="form-control" id="cod_usuario" name="cod_usuario" value="<?=$dados[0];?>" disabled>
     <div id="helpIdCurso" class="form-text">
         O ID do usuário é gerado automaticamente pelo sistema.
   </div>
@@ -71,7 +70,8 @@
         <option value="1">Ativo</option>
     </select>
   </div>
-  <?php echo "<td><a href='index.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr>";
-  echo "<td><a href='index.php?p=usuarios/edit.php&id_del=".$dados[0]."' class='btn btn-danger'>Excluir</a></tr>"; ?>
+
+  <?php echo "<td><a href='index.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr> "; ?>
+  <button type="submit" class="btn btn-danger">Excluir</button>
   <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Voltar</a>
 </form>
