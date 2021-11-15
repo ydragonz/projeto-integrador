@@ -71,7 +71,7 @@
         <option value="1">Ativo</option>
     </select>
   </div>
-<?php echo "<td><a href='index.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr>" ?>
+  <?php echo "<td><a href='index.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr>" ?>
   <button type="submit" class="btn btn-danger">Excluir</button>
   <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Voltar</a>
 </form>

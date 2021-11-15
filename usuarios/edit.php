@@ -1,12 +1,21 @@
 <?php
-    include('config.php');
-
+    //include('config.php');
+    $host = "localhost";
+    $user = "root";
+    $password = "";
+    $dbname = "pi_db";
     $conn = new mysqli($host, $user, $password, $dbname);
     if($conn->connect_error) {
         die("Erro na conexão: ".$conn->connect_error);
     }
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
+          ?>
+          <div class="alert alert-success" role="alert">
+            <h1>Usuário editado com sucesso!</h1>
+            volte para a página anterior
+          </div>
+          <?php
         }
         else {
             $id = $_GET['id'];
@@ -22,7 +31,7 @@
 
     }
 
-
+  if(!isset($_POST["id_curso"])) {
 ?>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Editando usuário</h1>
@@ -73,6 +82,8 @@
       </select>
   </div>
 
-  <button type="submit" class="btn btn-primary">Editar</button>
-  <button type="submit" class="btn btn-danger">Apagar</button>
-</form>
+  <button type="submit" class="btn btn-primary">Salvar</button>
+  <?php echo "<td><a href='index.php?p=usuarios/detalhes.php&id=".$dados[0]."' class='btn btn-secondary'>Cancelar</a></tr>" ?>
+</form
+
+<?php } ?>

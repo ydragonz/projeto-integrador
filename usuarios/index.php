@@ -56,7 +56,7 @@ if($res->num_rows>0){
                         <td>".$row['dtn_usuario']."</td>
                         <td>".$adm."</td>
                         <td>".$status."</td>
-                        <td><a href='index.php?p=usuarios/detalhes.php&id=".$row['cod_usuario']."' class='btn btn-primary btn-sm'>Detalhes</a></tr>"; // revisar
+                        <td><a href='index.php?p=usuarios/detalhes.php&id=".$row['cod_usuario']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>"; // revisar
                 }
                 ?>
             
