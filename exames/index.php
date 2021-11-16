@@ -1,14 +1,14 @@
 <?php
 include('config.php');
 
-$con = new mysqli($host, $user, $password, $dbname);
+$conn = new mysqli($host, $user, $password, $dbname);
 
-if($con->connect_error){
-    die("Erro na conexão: ".$con->connect_error);
+if($conn->connect_error){
+    die("Erro na conexão: ".$conn>connect_error);
 }
 
 $sql = "select * from exames order by num_exame";  //testando
-$res = $con->query($sql);
+$res = $conn->query($sql);
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -51,6 +51,6 @@ else {
     </div>
     <?php
 }
-$con->close();
+$conn->close();
 
 ?>
