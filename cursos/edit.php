@@ -10,6 +10,10 @@
     }
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
+          $id_curso = $_POST['id_curso'];
+          $nom_curso = $_POST['nom_curso'];
+
+          $sql = "UPDATE cursos SET nom_curso = $nom_curso WHERE id_curso = $id_curso;";
           ?>
           
           <div class="alert alert-success" role="alert">
@@ -41,14 +45,14 @@
   <div class="mb-3">
     <div class="mb-3">
       <label class="form-label">ID curso</label>
-      <input type="text" class="form-control" value="<?=$dados[0];?>" disabled>
+      <input type="text" class="form-control" name="id_curso" id="id_curso" value="<?=$dados[0];?>" disabled>
       <div id="helpIdCurso" class="form-text">
           O ID do curso é gerado automaticamente pelo sistema.
       </div>
     </div>
     <div class="mb-3">
       <label for="nom_curso" class="form-label">Nome curso</label>
-      <input type="text" class="form-control" id="nom_curso" name="nom_curso" value="<?=$dados[1];?>">
+      <input type="text" class="form-control" name="nom_curso" id="nom_curso" value="<?=$dados[1];?>">
     </div>
 
   <button type="submit" class="btn btn-success">Salvar</button>

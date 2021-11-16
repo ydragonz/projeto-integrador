@@ -1,7 +1,7 @@
 <?php
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include('../config.php');
+    include('config.php');
 
     //verificar a conexão
     $conn = new mysqli($host, $user, $password, $dbname);
@@ -15,6 +15,7 @@
       $sql = "INSERT INTO cursos (id_curso, nom_curso) VALUES (NULL, '$nom_curso')";
       if($conn->query($sql) === TRUE) {
         ?>
+        <br>
         <div class="alert alert-success" role="alert">
           <h1>Curso criado com sucesso!</h1>
           volte para a página anterior e atualize a página.
@@ -38,7 +39,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Novo curso</h1>
 </div>
-<form action="cursos/new.php" method="post">
+<form action="index.php?p=cursos/new.php" method="post">
   <div class="mb-3">
     <label class="form-label">ID curso</label>
     <input type="text" class="form-control" disabled>
