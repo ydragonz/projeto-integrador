@@ -12,6 +12,7 @@
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
           ?>
           
+          
           <div class="alert alert-success" role="alert">
             <h1>Usuário editado com sucesso!</h1>
             volte para a página anterior e atualize a página.

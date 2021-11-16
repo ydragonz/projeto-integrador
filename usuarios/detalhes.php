@@ -10,19 +10,42 @@
 
         }
         else {
-          $id = $_GET['id'];
-          $sql = "select * from usuarios where cod_usuario = ?";
-          $stmt = $conn->prepare($sql);
-          $stmt->bind_param("s", $id);
-          $stmt->execute();
-          $result = $stmt->get_result();
+
+          if(isset($_GET['del'])) {
+            $id = $_GET['del'];
+            $conn->query("DELETE FROM usuarios WHERE cod_usuario=$id");
+            ?>
+            <br>
+            <div class="alert alert-success" role="alert">
+              <h2>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+              </svg>
+              Usuário excluído com sucesso!</h2>
+              volte para a página anterior e atualize a página.
+            </div>
+            <?php
+          }
+
+          if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $sql = "select * from usuarios where cod_usuario = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+              
+            $dados = $result->fetch_row() ;
+              
             
-          $dados = $result->fetch_row() ;
-            
+          }
+          
         }
 
     }
+    if(!isset($_GET['del'])) {
 ?>
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Visualizando usuário</h1>
 </div>
@@ -71,7 +94,9 @@
     </select>
   </div>
 
-  <?php echo "<td><a href='index.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr> "; ?>
-  <button type="submit" class="btn btn-danger">Excluir</button>
+  <?php echo "<td><a href='index.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr> "; 
+  echo "<td><a href='index.php?p=usuarios/detalhes.php&del=".$dados[0]."' class='btn btn-danger'>Excluir</a></tr>" ?>
   <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Voltar</a>
 </form>
+
+<?php } ?>
