@@ -10,7 +10,7 @@
     }
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
-          $id_curso = $_GET['id'];
+          $id_curso = $_GET['id_curso'];
           $nom_curso = $_POST['nom_curso'];
 
           $sql = "UPDATE cursos SET nom_curso = '$nom_curso' WHERE id_curso = '$id_curso';";
@@ -52,7 +52,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Editando curso</h1>
 </div>
-<form method="post" action="index.php?p=cursos/edit.php">
+<form action="index.php?p=cursos/edit.php" method="post">
   <div class="mb-3">
     <div class="mb-3">
       <label class="form-label">ID curso</label>
@@ -66,7 +66,7 @@
       <input type="text" class="form-control" name="nom_curso" id="nom_curso" value="<?=$dados[1];?>">
     </div>
 
-  <button type="submit" class="btn btn-success">Salvar</button>
+  <button type="submit" name="submit" class="btn btn-success">Salvar</button>
   <a class="btn btn-secondary" href="index.php?p=cursos/index.php" role="button">Cancelar</a>
 </form
 
