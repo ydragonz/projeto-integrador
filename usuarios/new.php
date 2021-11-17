@@ -1,7 +1,7 @@
 <?php
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include('../config.php');
+    include('config.php');
 
     //verificar a conexão
     $conn = new mysqli($host, $user, $password, $dbname);
@@ -20,6 +20,7 @@
       $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, dtn_usuario, sen_usuario, per_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', '$dtn_usuario', '$sen_usuario', '$per_usuario', '$sts_usuario')";
       if($conn->query($sql) === TRUE) {
         ?>
+        <br>
         <div class="alert alert-success" role="alert">
           <h1>Usuário criado com sucesso!</h1>
           volte para a página anterior e atualize a página.
@@ -43,7 +44,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Novo usuário</h1>
 </div>
-<form action="usuarios/new.php" method="post">
+<form action="index.php?p=usuarios/new.php" method="post">
   <div class="mb-3">
     <label class="form-label">ID usuário</label>
     <input type="text" class="form-control" disabled>

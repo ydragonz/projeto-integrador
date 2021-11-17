@@ -1,5 +1,5 @@
 <?php
-    //include('config.php');
+    //include('../config.php');
     $host = "localhost";
     $user = "root";
     $password = "";
@@ -10,17 +10,29 @@
     }
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
+          echo $_POST['id_curso'];
           $id_curso = $_POST['id_curso'];
           $nom_curso = $_POST['nom_curso'];
 
-          $sql = "UPDATE cursos SET nom_curso = $nom_curso WHERE id_curso = $id_curso;";
-          ?>
-          
-          <div class="alert alert-success" role="alert">
-            <h1>Curso editado com sucesso!</h1>
-            volte para a página anterior e atualize a página.
-          </div>
-          <?php
+          $sql = "UPDATE cursos SET nom_curso = '$nom_curso' WHERE id_curso = '$id_curso';";
+          if($conn->query($sql) === TRUE) {
+            ?>
+            <br>
+            <div class="alert alert-success" role="alert">
+              <h1>Curso criado com sucesso!</h1>
+              volte para a página anterior e atualize a página.
+            </div>
+            <?php
+          }
+          else {
+            ?>
+            <div class="alert alert-danger" role="alert">
+              <?php
+              echo "Falha: ".$sql."\n".$conn->error;
+              ?>
+            </div>
+            <?php
+          }
         }
         else {
             $id = $_GET['id'];
@@ -41,7 +53,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Editando curso</h1>
 </div>
-<form method="post" action="cursos/edit.php">
+<form method="post" action="index.php?p=cursos/edit.php">
   <div class="mb-3">
     <div class="mb-3">
       <label class="form-label">ID curso</label>
