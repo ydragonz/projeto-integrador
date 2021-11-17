@@ -10,8 +10,7 @@
     }
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
-          echo $_POST['id_curso'];
-          $id_curso = $_POST['id_curso'];
+          $id_curso = $_GET['id'];
           $nom_curso = $_POST['nom_curso'];
 
           $sql = "UPDATE cursos SET nom_curso = '$nom_curso' WHERE id_curso = '$id_curso';";
