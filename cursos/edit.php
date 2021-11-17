@@ -10,7 +10,7 @@
     }
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
-          $id_curso = $_GET['id_curso'];
+          $id_curso = $_POST['id_curso'];
           $nom_curso = $_POST['nom_curso'];
 
           $sql = "UPDATE cursos SET nom_curso = '$nom_curso' WHERE id_curso = '$id_curso';";
@@ -18,7 +18,7 @@
             ?>
             <br>
             <div class="alert alert-success" role="alert">
-              <h1>Curso criado com sucesso!</h1>
+              <h1>Curso editado com sucesso!</h1>
               volte para a página anterior e atualize a página.
             </div>
             <?php
