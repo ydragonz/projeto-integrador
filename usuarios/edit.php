@@ -66,7 +66,7 @@
   <div class="mb-3">
     <div class="mb-3">
       <label class="form-label">ID usuário</label>
-      <input type="text" class="form-control" value="<?=$dados[0];?>" readonly>
+      <input type="text" class="form-control" id="cod_usuario" name="cod_usuario" value="<?=$dados[0];?>" readonly>
       <div id="helpIdCurso" class="form-text">
           O ID do usuário é gerado automaticamente pelo sistema.
       </div>

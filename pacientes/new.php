@@ -42,25 +42,22 @@
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Novo usuário</h1>
+    <h1 class="h2">Novo paciente</h1>
 </div>
-<form action="index.php?p=usuarios/new.php" method="post">
+<form action="index.php?p=pacientes/new.php" method="POST">
   <div class="mb-3">
-    <label class="form-label">Código usuário</label>
+    <label class="form-label">Código paciente</label>
     <input type="text" class="form-control" disabled>
     <div id="helpIdCurso" class="form-text">
-        O ID do usuário é gerado automaticamente pelo sistema.
+        O código do paciente é gerado automaticamente pelo sistema.
     </div>
   </div>
   <div class="mb-3">
-    <label for="id_curso" class="form-label">ID curso</label>
-    <input type="text" class="form-control" id="id_curso" name="id_curso">
-    <div id="helpIdCurso" class="form-text">
-        O ID do curso realizado pelo usuário, em caso de dúvidas consultar a página de cursos.
-    </div>
+    <label for="nom_paciente" class="form-label">Nome paciente</label>
+    <input type="text" class="form-control" id="nom_paciente" name="nom_paciente">
   </div>
   <div class="mb-3">
-    <label for="nom_usuario" class="form-label">Nome do usuário</label>
+    <label for="nom_usuario" class="form-label">Sexo</label>
     <input type="text" class="form-control" id="nom_usuario" name="nom_usuario">
   </div>
   <div class="mb-3">
