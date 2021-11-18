@@ -20,7 +20,8 @@
           nom_usuario='$nom_usuario',
           dtn_usuario='$dtn_usuario',
           sen_usuario='$sen_usuario',
-          
+          per_usuario='$per_usuario',
+          sts_usuario='$sts_usuario'
           WHERE cod_usuario = '$cod_usuario'";
 
           if($conn->query($sql) === TRUE) {
