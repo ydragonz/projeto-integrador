@@ -53,42 +53,42 @@
 <div class="mb-3">
   <div class="mb-3">
     <label class="form-label">ID usuário</label>
-    <input type="text" class="form-control" id="cod_usuario" name="cod_usuario" value="<?=$dados[0];?>" disabled>
+    <input type="text" class="form-control" id="cod_usuario" name="cod_usuario" value="<?=$dados[0];?>" readonly>
     <div id="helpIdCurso" class="form-text">
         O ID do usuário é gerado automaticamente pelo sistema.
   </div>
   </div>
     <label for="id_curso" class="form-label">ID curso</label>
-    <input type="text" class="form-control" id="id_curso" name="id_curso" value="<?=$dados[1];?>" disabled>
+    <input type="text" class="form-control" id="id_curso" name="id_curso" value="<?=$dados[1];?>" readonly>
     <div id="helpIdCurso" class="form-text">
         O ID do curso realizado pelo usuário, em caso de duvidas consultar a página de cursos.
     </div>
   </div>
   <div class="mb-3">
     <label for="nom_usuario" class="form-label">Nome do usuário</label>
-    <input type="text" class="form-control" id="nom_usuario" name="nom_usuario" value="<?=$dados[2];?>" disabled>
+    <input type="text" class="form-control" id="nom_usuario" name="nom_usuario" value="<?=$dados[2];?>" readonly>
   </div>
   <div class="mb-3">
     <label for="dtn_usuario" class="form-label">Data de nascimento</label>
-        <input type="date" class="form-control" id="dtn_usuario" name="dtn_usuario" value="<?=$dados[3];?>" disabled>
+        <input type="date" class="form-control" id="dtn_usuario" name="dtn_usuario" value="<?=$dados[3];?>" readonly>
   </div>
   <div class="mb-3">
     <label for="sen_usuario" class="form-label">Senha</label>
-    <input type="password" class="form-control" id="sen_usuario" name="sen_usuario" value="<?=$dados[4];?>" disabled>
+    <input type="password" class="form-control" id="sen_usuario" name="sen_usuario" value="<?=$dados[4];?>" readonly>
     <div id="helpNomeUsuario" class="form-text">
         Lembre-se de não compartilhar com ninguém.
     </div>
   </div>
   <div class="mb-3">
     <label for="per_usuario" class="form-label">Cargo</label>
-    <select class="form-select" id="per_usuario" name="per_usuario" value="<?=$dados[5];?>" disabled>
+    <select class="form-select" id="per_usuario" name="per_usuario" value="<?=$dados[5];?>" readonly>
         <option selected value="0">Comum</option>
         <option value="1">Administrador</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="sts_usuario" class="form-label">Status</label>
-    <select class="form-select" id="sts_usuario" name="sts_usuario" value="<?=$dados[6];?>" disabled>
+    <select class="form-select" id="sts_usuario" name="sts_usuario" value="<?=$dados[6];?>" readonly>
         <option selected value="0">Inativo</option>
         <option value="1">Ativo</option>
     </select>

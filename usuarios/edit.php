@@ -6,19 +6,41 @@
     }
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
+          $cod_usuario = $_POST['cod_usuario'];
+          $id_curso = $_POST['id_curso'];
+          $nom_usuario = $_POST['nom_usuario'];
+          $dtn_usuario = date('Y-m-d', strtotime($_POST['dtn_usuario']));
+          $sen_usuario = $_POST['sen_usuario'];
+          $per_usuario = $_POST['per_usuario'];
+          $sts_usuario = $_POST['sts_usuario'];
+
+          $sql = "UPDATE usuarios SET 
+          cod_usuario='$cod_usuario', 
+          id_curso='$id_curso', 
+          nom_usuario='$nom_usuario',
+          dtn_usuario='$dtn_usuario',
+          sen_usuario='$sen_usuario',
           
-          
-          ?>
-          <br>
-          <div class="alert alert-success" role="alert">
-            <h2>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-            </svg>  
-            Usuário editado com sucesso!</h2>
-            volte para a página anterior e atualize a página.
-          </div>
-          <?php
+          WHERE cod_usuario = '$cod_usuario'";
+
+          if($conn->query($sql) === TRUE) {
+            ?>
+            <br>
+            <div class="alert alert-success" role="alert">
+              <h1>Usuário editado com sucesso!</h1>
+              volte para a página anterior e atualize a página.
+            </div>
+            <?php
+          }
+          else {
+            ?>
+            <div class="alert alert-danger" role="alert">
+              <?php
+              echo "Falha: ".$sql."\n".$conn->error;
+              ?>
+            </div>
+            <?php
+          }
         }
         else {
             $id = $_GET['id'];
@@ -43,7 +65,7 @@
   <div class="mb-3">
     <div class="mb-3">
       <label class="form-label">ID usuário</label>
-      <input type="text" class="form-control" value="<?=$dados[0];?>" disabled>
+      <input type="text" class="form-control" value="<?=$dados[0];?>" readonly>
       <div id="helpIdCurso" class="form-text">
           O ID do usuário é gerado automaticamente pelo sistema.
       </div>

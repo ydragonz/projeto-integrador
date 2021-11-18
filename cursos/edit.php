@@ -13,7 +13,7 @@
           $id_curso = $_POST['id_curso'];
           $nom_curso = $_POST['nom_curso'];
 
-          $sql = "UPDATE cursos SET nom_curso = '$nom_curso' WHERE id_curso = '$id_curso';";
+          $sql = "UPDATE cursos SET nom_curso = '$nom_curso' WHERE id_curso = '$id_curso'";
           if($conn->query($sql) === TRUE) {
             ?>
             <br>
@@ -52,11 +52,11 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Editando curso</h1>
 </div>
-<form action="index.php?p=cursos/edit.php" method="post">
+<form action="index.php?p=cursos/edit.php" method="POST">
   <div class="mb-3">
     <div class="mb-3">
       <label class="form-label">ID curso</label>
-      <input type="text" class="form-control" name="id_curso" id="id_curso" value="<?=$dados[0];?>" disabled>
+      <input type="text" class="form-control" name="id_curso" id="id_curso" value="<?=$dados[0];?>" readonly>
       <div id="helpIdCurso" class="form-text">
           O ID do curso é gerado automaticamente pelo sistema.
       </div>
