@@ -54,7 +54,7 @@
   </div>
   <div class="mb-3">
     <label for="id_curso" class="form-label">ID curso</label>
-    <input type="text" class="form-control" id="id_curso" name="id_curso">
+    <input type="number" class="form-control" id="id_curso" name="id_curso">
     <div id="helpIdCurso" class="form-text">
         O ID do curso realizado pelo usuário, em caso de dúvidas consultar a página de cursos.
     </div>
