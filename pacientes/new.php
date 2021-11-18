@@ -12,12 +12,12 @@
     else {
       $id_curso = $_POST['id_curso'];
       $nom_usuario = $_POST['nom_usuario'];
-      $dtn_usuario = date('Y-m-d', strtotime($_POST['dtn_usuario']));
+      $s = date('Y-m-d', strtotime($_POST['']));
       $sen_usuario = $_POST['sen_usuario'];
-      $per_usuario = $_POST['per_usuario'];
+      $sex_usuario = $_POST['sex_usuario'];
       $sts_usuario = $_POST['sts_usuario'];
 
-      $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, dtn_usuario, sen_usuario, per_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', '$dtn_usuario', '$sen_usuario', '$per_usuario', '$sts_usuario')";
+      $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, , sen_usuario, sex_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', '$', '$sen_usuario', '$sex_usuario', '$sts_usuario')";
       if($conn->query($sql) === TRUE) {
         ?>
         <br>
@@ -57,36 +57,39 @@
     <input type="text" class="form-control" id="nom_paciente" name="nom_paciente">
   </div>
   <div class="mb-3">
-    <label for="nom_usuario" class="form-label">Sexo</label>
-    <input type="text" class="form-control" id="nom_usuario" name="nom_usuario">
-  </div>
-  <div class="mb-3">
-    <label for="dtn_usuario" class="form-label">Data de nascimento</label>
-        <input type="date" class="form-control" id="dtn_usuario" name="dtn_usuario">
-  </div>
-  <div class="mb-3">
-    <label for="sen_usuario" class="form-label">Senha</label>
-    <input type="password" class="form-control" id="sen_usuario" name="sen_usuario">
-    <div id="helpNomeUsuario" class="form-text">
-        Lembre-se de não compartilhar com ninguém.
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="per_usuario" class="form-label">Cargo</label>
-    <select class="form-select" id="per_usuario" name="per_usuario">
-        <option selected value="0">Comum</option>
-        <option value="1">Administrador</option>
+  <label for="sex_usuario" class="form-label">Sexo</label>
+    <select class="form-select" id="sex_usuario" name="sex_usuario">
+        <option selected value="0">M</option>
+        <option value="1">F</option>
     </select>
   </div>
   <div class="mb-3">
-    <label for="sts_usuario" class="form-label">Status</label>
-    <select class="form-select" id="sts_usuario" name="sts_usuario">
-        <option selected value="0">Inativo</option>
-        <option value="1">Ativo</option>
-    </select>
+    <label for="end_paciente" class="form-label">Endereço</label>
+    <input type="text" class="form-control" id="end_paciente" name="end_paciente">
   </div>
+  <div class="mb-3">
+    <label for="bai_paciente" class="form-label">Bairro</label>
+    <input type="text" class="form-control" id="bai_paciente" name="bai_paciente">
+  </div>
+  <div class="mb-3">
+    <label for="com_paciente" class="form-label">Complemento</label>
+    <input type="text" class="form-control" id="com_paciente" name="com_paciente">
+  </div>  
+  <div class="mb-3">
+    <label for="cep_paciente" class="form-label">Cep</label>
+    <input type="number" class="form-control" id="cep_paciente" name="cep_paciente">
+  </div>  
+  <div class="mb-3">
+    <label for="cid_paciente" class="form-label">Cidade</label>
+        <input type="text" class="form-control" id="cid_paciente" name="cid_paciente">
+  </div>
+  <div class="mb-3">
+    <label for="uf_paciente" class="form-label">UF</label>
+        <input type="text" class="form-control" id="uf_paciente" name="uf_paciente">
+  </div>
+  
   <button type="submit" class="btn btn-success">Cadastrar</button>
-  <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Voltar</a>
+  <a class="btn btn-secondary" href="index.php?p=pacientes/index.php" role="button">Voltar</a>
 </form>
 
 <?php } ?>
