@@ -111,7 +111,7 @@
   </div>
   <div class="mb-3">
     <label for="fone_paciente" class="form-label">Telefone</label>
-    <input type="text" class="form-control" id="fone_paciente" name="fone_paciente" maxlength="10">
+    <input type="text" class="form-control" id="fone_paciente" name="fone_paciente" maxlength="10" placeholder="0000000000">
     <div id="helpTelPaciente" class="form-text">
     Não utilizar traços ou qualquer tipo de caractere diferente de números.
     </div>
@@ -122,16 +122,16 @@
   </div>
   <div class="mb-3">
     <label for="pes_paciente" class="form-label">Peso</label>
-    <input type="number" class="form-control" id="pes_paciente" name="pes_paciente">
+    <input type="number" class="form-control" id="pes_paciente" name="pes_paciente" step=".01">
     <div id="helpPesPaciente" class="form-text">
     Peso do paciente em quilogramas (kg) separando a parte decimal por ponto (.).
     </div>
   </div>
   <div class="mb-3">
     <label for="alt_paciente" class="form-label">Altura</label>
-    <input type="number" class="form-control" id="alt_paciente" name="alt_paciente">
+    <input type="number" class="form-control" id="alt_paciente" name="alt_paciente" step=".01">
     <div id="helpAltPaciente" class="form-text">
-    Altura do paciente em centimetros (cm).
+    Altura do paciente em metros (m) separando a parte decimal por ponto (.).
     </div>
   </div>
   <div class="mb-3">
