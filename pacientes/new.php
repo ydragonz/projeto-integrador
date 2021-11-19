@@ -3,7 +3,6 @@
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     include('config.php');
 
-    //verificar a conexão
     $conn = new mysqli($host, $user, $password, $dbname);
     
     if($conn->connect_error){
