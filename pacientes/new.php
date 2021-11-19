@@ -21,6 +21,15 @@
       $fone_paciente = $_POST['fone_paciente'];
       $email_paciente = $_POST['email_paciente'];
       $pes_paciente = $_POST['pes_paciente'];
+      $alt_paciente = $_POST['alt_paciente'];
+      $fuma_paciente = $_POST['fuma_paciente'];
+      $bebe_paciente = $_POST['bebe_paciente'];
+      $hiper_paciente = $_POST['hiper_paciente'];
+      $diab_paciente = $_POST['diab_paciente'];
+      $dac_paciente = $_POST['dac_paciente'];
+      $doe_paciente = $_POST['doe_paciente'];
+      $med_paciente = $_POST['med_paciente'];
+      $rem_paciente = $_POST['rem_paciente'];
 
       // Incompleto
 
@@ -127,36 +136,36 @@
     </div>
   </div>
   <div class="mb-3">
-  <label for="fuma_usuario" class="form-label">Fuma</label>
-    <select class="form-select" id="fuma_usuario" name="fuma_usuario">
+  <label for="fuma_paciente" class="form-label">Fuma</label>
+    <select class="form-select" id="fuma_paciente" name="fuma_paciente">
         <option value="0">Não</option>
         <option value="1">Sim</option>
     </select>
   </div>
   <div class="mb-3">
-  <label for="bebe_usuario" class="form-label">Bebe</label>
-    <select class="form-select" id="bebe_usuario" name="bebe_usuario">
+  <label for="bebe_paciente" class="form-label">Bebe</label>
+    <select class="form-select" id="bebe_paciente" name="bebe_paciente">
         <option value="0">Não</option>
         <option value="1">Sim</option>
     </select>
   </div>
   <div class="mb-3">
-  <label for="hiper_usuario" class="form-label">Hipertenso</label>
-    <select class="form-select" id="hiper_usuario" name="hiper_usuario">
+  <label for="hiper_paciente" class="form-label">Hipertenso</label>
+    <select class="form-select" id="hiper_paciente" name="hiper_paciente">
         <option value="0">Não</option>
         <option value="1">Sim</option>
     </select>
   </div>
   <div class="mb-3">
-  <label for="diab_usuario" class="form-label">Diabético</label>
-    <select class="form-select" id="diab_usuario" name="diab_usuario">
+  <label for="diab_paciente" class="form-label">Diabético</label>
+    <select class="form-select" id="diab_paciente" name="diab_paciente">
         <option value="0">Não</option>
         <option value="1">Sim</option>
     </select>
   </div>
   <div class="mb-3">
-  <label for="dac_usuario" class="form-label">Doença arterial coronariana</label>
-    <select class="form-select" id="dac_usuario" name="dac_usuario">
+  <label for="dac_paciente" class="form-label">Doença arterial coronariana</label>
+    <select class="form-select" id="dac_paciente" name="dac_paciente">
         <option value="0">Não</option>
         <option value="1">Sim</option>
     </select>
@@ -166,8 +175,8 @@
     <input type="text" class="form-control" id="doe_paciente" name="doe_paciente" maxlength="100">
   </div>
   <div class="mb-3">
-  <label for="med_usuario" class="form-label">Toma remédio</label>
-    <select class="form-select" id="med_usuario" name="med_usuario">
+  <label for="med_paciente" class="form-label">Toma remédio</label>
+    <select class="form-select" id="med_paciente" name="med_paciente">
         <option value="0">Não</option>
         <option value="1">Sim</option>
     </select>
