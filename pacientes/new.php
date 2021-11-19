@@ -10,7 +10,7 @@
     }
     else {
       $nom_paciente = $_POST['nom_paciente'];
-      $sex_usuario = $_POST['sex_usuario'];
+      $sex_paciente = $_POST['sex_paciente'];
       $end_paciente = $_POST['end_paciente'];
       $bai_paciente = $_POST['bai_paciente'];
       $com_paciente = $_POST['com_paciente'];
@@ -32,7 +32,7 @@
       $rem_paciente = $_POST['rem_paciente'];
 
       $sql = "INSERT INTO pacientes (cod_paciente, nom_paciente, sex_paciente, end_paciente, bai_paciente, com_paciente, cep_paciente, cid_paciente, uf_paciente, dtn_paciente, fone_paciente, email_paciente, pes_paciente, alt_paciente, fuma_paciente, bebe_paciente, hiper_paciente, diab_paciente, dac_paciente, doe_paciente, med_paciente, rem_paciente) 
-              VALUES (NULL, '$nom_paciente', '$sex_paciente', '$end_paciente', '$bai_paciente', '$com_paciente', '$cep_paciente', '$cid_paciente', '$uf_paciente', '$dtn_paciente', '$fone_paciente', '$email_paciente', '$pes_paciente', '$alt_paciente', '$fuma_paciente', '$bebe_paciente', '$hiper_paciente', '$diab_paciente', '$dac_paciente', '$doe_paciente', '$med_paciente', $rem_paciente')";
+              VALUES (NULL, '$nom_paciente', '$sex_paciente', '$end_paciente', '$bai_paciente', '$com_paciente', '$cep_paciente', '$cid_paciente', '$uf_paciente', '$dtn_paciente', '$fone_paciente', '$email_paciente', '$pes_paciente', '$alt_paciente', '$fuma_paciente', '$bebe_paciente', '$hiper_paciente', '$diab_paciente', '$dac_paciente', '$doe_paciente', '$med_paciente', '$rem_paciente')";
       if($conn->query($sql) === TRUE) {
         ?>
         <br>
@@ -72,10 +72,10 @@
     <input type="text" class="form-control" id="nom_paciente" name="nom_paciente" maxlength="40">
   </div>
   <div class="mb-3">
-  <label for="sex_usuario" class="form-label">Sexo</label>
-    <select class="form-select" id="sex_usuario" name="sex_usuario">
-        <option value="0">M</option>
-        <option value="1">F</option>
+  <label for="sex_paciente" class="form-label">Sexo</label>
+    <select class="form-select" id="sex_paciente" name="sex_paciente">
+        <option value="M">M</option>
+        <option value="F">F</option>
     </select>
   </div>
   <div class="mb-3">
