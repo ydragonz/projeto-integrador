@@ -21,16 +21,42 @@ if($res->num_rows>0){
     ?>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
-            <thead>
+        <thead>
                 <tr>
-                
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sexo</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Data de nasc</th>
                 </tr>
             </thead>
             <tbody>
 
                 <?php
                 while($row = $res->fetch_assoc()){
-                    
+                    $status="";
+                    $adm="";
+                    if($row['sts_usuario']==1) {
+                        $status="Ativo";
+                    }
+                    else {
+                        $status="Inativo";
+                    }
+                    if($row['per_usuario']==1) {
+                        $adm="Administrador";
+                    }
+                    else {
+                        $adm="Comum";
+                    }
+                    echo "<tr>
+                        <td>".$row['cod_usuario']."</td>
+                        <td>".$row['nom_usuario']."</td>
+                        <td>".$row['nom_curso']."</td>
+                        <td>".$row['dtn_usuario']."</td>
+                        <td>".$adm."</td>
+                        <td>".$status."</td>
+                        <td><a href='index.php?p=usuarios/detalhes.php&id=".$row['cod_usuario']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>"; // revisar
                 }
                 ?>
             
