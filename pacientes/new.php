@@ -10,12 +10,20 @@
       die("Erro de conexão: ".$conn->connect_error);
     }
     else {
-      $id_curso = $_POST['id_curso'];
-      $nom_usuario = $_POST['nom_usuario'];
-      $s = date('Y-m-d', strtotime($_POST['']));
-      $sen_usuario = $_POST['sen_usuario'];
+      $nom_paciente = $_POST['nom_paciente'];
       $sex_usuario = $_POST['sex_usuario'];
-      $sts_usuario = $_POST['sts_usuario'];
+      $end_paciente = $_POST['end_paciente'];
+      $bai_paciente = $_POST['bai_paciente'];
+      $com_paciente = $_POST['com_paciente'];
+      $cep_paciente = $_POST['cep_paciente'];
+      $cid_paciente = $_POST['cid_paciente'];
+      $uf_paciente = $_POST['uf_paciente'];
+      $dtn_paciente = date('Y-m-d', strtotime($_POST['dtn_paciente']));
+      $fone_paciente = $_POST['fone_paciente'];
+      $email_paciente = $_POST['email_paciente'];
+      $pes_paciente = $_POST['pes_paciente'];
+
+      // Incompleto
 
       $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, , sen_usuario, sex_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', '$', '$sen_usuario', '$sex_usuario', '$sts_usuario')";
       if($conn->query($sql) === TRUE) {
@@ -59,7 +67,7 @@
   <div class="mb-3">
   <label for="sex_usuario" class="form-label">Sexo</label>
     <select class="form-select" id="sex_usuario" name="sex_usuario">
-        <option selected value="0">M</option>
+        <option value="0">M</option>
         <option value="1">F</option>
     </select>
   </div>
@@ -108,19 +116,68 @@
   <div class="mb-3">
     <label for="pes_paciente" class="form-label">Peso</label>
     <input type="number" class="form-control" id="pes_paciente" name="pes_paciente">
-    <div id="helpTelPaciente" class="form-text">
+    <div id="helpPesPaciente" class="form-text">
     Peso do paciente em quilogramas (kg) separando a parte decimal por ponto (.).
     </div>
   </div>
   <div class="mb-3">
     <label for="alt_paciente" class="form-label">Altura</label>
     <input type="number" class="form-control" id="alt_paciente" name="alt_paciente">
-    <div id="helpTelPaciente" class="form-text">
+    <div id="helpAltPaciente" class="form-text">
     Altura do paciente em centimetros (cm).
     </div>
   </div>
+  <div class="mb-3">
+  <label for="fuma_usuario" class="form-label">Fuma</label>
+    <select class="form-select" id="fuma_usuario" name="fuma_usuario">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+    </select>
+  </div>
+  <div class="mb-3">
+  <label for="bebe_usuario" class="form-label">Bebe</label>
+    <select class="form-select" id="bebe_usuario" name="bebe_usuario">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+    </select>
+  </div>
+  <div class="mb-3">
+  <label for="hiper_usuario" class="form-label">Hipertenso</label>
+    <select class="form-select" id="hiper_usuario" name="hiper_usuario">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+    </select>
+  </div>
+  <div class="mb-3">
+  <label for="diab_usuario" class="form-label">Diabético</label>
+    <select class="form-select" id="diab_usuario" name="diab_usuario">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+    </select>
+  </div>
+  <div class="mb-3">
+  <label for="dac_usuario" class="form-label">Doença arterial coronariana</label>
+    <select class="form-select" id="dac_usuario" name="dac_usuario">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="doe_paciente" class="form-label">Outras doenças</label>
+    <input type="text" class="form-control" id="doe_paciente" name="doe_paciente" maxlength="100">
+  </div>
+  <div class="mb-3">
+  <label for="med_usuario" class="form-label">Toma remédio</label>
+    <select class="form-select" id="med_usuario" name="med_usuario">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="rem_paciente" class="form-label">Medicamentos</label>
+    <input type="text" class="form-control" id="rem_paciente" name="rem_paciente" maxlength="100">
+  </div>
 
-  
   <button type="submit" class="btn btn-success">Cadastrar</button>
   <a class="btn btn-secondary" href="index.php?p=pacientes/index.php" role="button">Voltar</a>
 </form>
