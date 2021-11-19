@@ -31,14 +31,13 @@
       $med_paciente = $_POST['med_paciente'];
       $rem_paciente = $_POST['rem_paciente'];
 
-      // Incompleto
-
-      $sql = "insert into usuarios (cod_usuario, id_curso, nom_usuario, , sen_usuario, sex_usuario, sts_usuario) values (NULL, '$id_curso', '$nom_usuario', '$', '$sen_usuario', '$sex_usuario', '$sts_usuario')";
+      $sql = "INSERT INTO pacientes (cod_paciente, nom_paciente, sex_paciente, end_paciente, bai_paciente, com_paciente, cep_paciente, cid_paciente, uf_paciente, dtn_paciente, fone_paciente, email_paciente, pes_paciente, alt_paciente, fuma_paciente, bebe_paciente, hiper_paciente, diab_paciente, dac_paciente, doe_paciente, med_paciente, rem_paciente) 
+              VALUES (NULL, '$nom_paciente', '$sex_paciente', '$end_paciente', '$bai_paciente', '$com_paciente', '$cep_paciente', '$cid_paciente', '$uf_paciente', '$dtn_paciente', '$fone_paciente', '$email_paciente', '$pes_paciente', '$alt_paciente', '$fuma_paciente', '$bebe_paciente', '$hiper_paciente', '$diab_paciente', '$dac_paciente', '$doe_paciente', '$med_paciente', $rem_paciente')";
       if($conn->query($sql) === TRUE) {
         ?>
         <br>
         <div class="alert alert-success" role="alert">
-          <h1>Usuário criado com sucesso!</h1>
+          <h1>Pacientes criado com sucesso!</h1>
           volte para a página anterior e atualize a página.
         </div>
         <?php

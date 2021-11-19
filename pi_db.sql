@@ -30,7 +30,7 @@ CREATE TABLE pacientes (
     cid_paciente VARCHAR(35) NOT NULL,
     uf_paciente VARCHAR(2) NOT NULL, 
     dtn_paciente DATE NOT NULL, 
-    fone_paciente VARCHAR(10), 
+    fone_paciente VARCHAR(11), 
     email_paciente VARCHAR(50), 
     pes_paciente NUMERIC(4,1) NOT NULL,  
     alt_paciente NUMERIC(3,2) NOT NULL, 
