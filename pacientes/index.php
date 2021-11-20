@@ -7,13 +7,13 @@ if($conn->connect_error){
     die("Erro na conexão: ".$conn->connect_error);
 }
 
-$sql = "select * from pacientes order by nom_paciente";  //testando
+$sql = "select * from pacientes order by cod_paciente";
 $res = $conn->query($sql);
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Pacientes</h1>
-    <form class="form-inline my-2 my-lg-0 position-relative" method="GET">
+    <form class="form-inline my-2 my-lg-0 position-relative" action="index.php?p=pacientes/index.php" method="GET">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <?php
       echo "<a href='index.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a>"
@@ -43,24 +43,47 @@ if($res->num_rows>0){
             <tbody>
 
                 <?php
-                while($row = $res->fetch_assoc()){
-                    $sexo="";
-                    if($row['sex_paciente']=="M") {
-                        $sexo="Masculino";
+                if(!isset($_GET['busca'])) {
+                    while($row = $res->fetch_assoc()){
+                        $sexo="";
+                        if($row['sex_paciente']=="M") {
+                            $sexo="Masculino";
+                        }
+                        else {
+                            $sexo="Feminino";
+                        }
+                        echo "<tr>
+                            <td>".$row['cod_paciente']."</td>
+                            <td>".$row['nom_paciente']."</td>
+                            <td>".$sexo."</td>
+                            <td>".$row['cid_paciente']."</td>
+                            <td>".$row['uf_paciente']."</td>
+                            <td>".$row['dtn_paciente']."</td>
+                            <td>".$row['fone_paciente']."</td>
+                            <td><a href='index.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>"; 
                     }
-                    else {
-                        $sexo="Feminino";
-                    }
-                    echo "<tr>
-                        <td>".$row['cod_paciente']."</td>
-                        <td>".$row['nom_paciente']."</td>
-                        <td>".$sexo."</td>
-                        <td>".$row['cid_paciente']."</td>
-                        <td>".$row['uf_paciente']."</td>
-                        <td>".$row['dtn_paciente']."</td>
-                        <td>".$row['fone_paciente']."</td>
-                        <td><a href='index.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>"; 
                 }
+                else {
+                    $id_busca = $_GET['busca'];
+                    $sql = "SELECT * FROM pacientes WHERE cod_paciente = '$id_busca'";
+                    $sexo="";
+                        if($row['sex_paciente']=="M") {
+                            $sexo="Masculino";
+                        }
+                        else {
+                            $sexo="Feminino";
+                        }
+                    echo "<tr>
+                            <td>".$row['cod_paciente']."</td>
+                            <td>".$row['nom_paciente']."</td>
+                            <td>".$sexo."</td>
+                            <td>".$row['cid_paciente']."</td>
+                            <td>".$row['uf_paciente']."</td>
+                            <td>".$row['dtn_paciente']."</td>
+                            <td>".$row['fone_paciente']."</td>
+                            <td><a href='index.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>"; 
+                }
+                
                 ?>
             
             </tbody>
