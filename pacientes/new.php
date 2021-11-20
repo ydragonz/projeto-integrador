@@ -111,7 +111,7 @@
   </div>
   <div class="mb-3">
     <label for="fone_paciente" class="form-label">Telefone</label>
-    <input type="text" class="form-control" id="fone_paciente" name="fone_paciente" maxlength="10" placeholder="0000000000">
+    <input type="text" class="form-control" id="fone_paciente" name="fone_paciente" maxlength="10" placeholder="">
     <div id="helpTelPaciente" class="form-text">
     Não utilizar traços ou qualquer tipo de caractere diferente de números.
     </div>
