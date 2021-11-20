@@ -13,6 +13,10 @@ $res = $conn->query($sql);
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Pacientes</h1>
+    <form class="form-inline my-2 my-lg-0 position-relative">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
     <a href="index.php?p=pacientes/new.php" type="button" class="btn btn-primary">Cadastrar</a>
 </div>
 
@@ -28,35 +32,31 @@ if($res->num_rows>0){
                 <th scope="col">Sexo</th>
                 <th scope="col">Cidade</th>
                 <th scope="col">Estado</th>
-                <th scope="col">Data de nasc</th>
+                <th scope="col">Data de nasc.</th>
+                <th scope="col">Telefone</th>
+                <th></th>
                 </tr>
             </thead>
             <tbody>
 
                 <?php
                 while($row = $res->fetch_assoc()){
-                    $status="";
-                    $adm="";
-                    if($row['sts_usuario']==1) {
-                        $status="Ativo";
+                    $sexo="";
+                    if($row['sex_paciente']=="M") {
+                        $sexo="Masculino";
                     }
                     else {
-                        $status="Inativo";
-                    }
-                    if($row['per_usuario']==1) {
-                        $adm="Administrador";
-                    }
-                    else {
-                        $adm="Comum";
+                        $sexo="Feminino";
                     }
                     echo "<tr>
-                        <td>".$row['cod_usuario']."</td>
-                        <td>".$row['nom_usuario']."</td>
-                        <td>".$row['nom_curso']."</td>
-                        <td>".$row['dtn_usuario']."</td>
-                        <td>".$adm."</td>
-                        <td>".$status."</td>
-                        <td><a href='index.php?p=usuarios/detalhes.php&id=".$row['cod_usuario']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>"; // revisar
+                        <td>".$row['cod_paciente']."</td>
+                        <td>".$row['nom_paciente']."</td>
+                        <td>".$sexo."</td>
+                        <td>".$row['cid_paciente']."</td>
+                        <td>".$row['uf_paciente']."</td>
+                        <td>".$row['dtn_paciente']."</td>
+                        <td>".$row['fone_paciente']."</td>
+                        <td><a href='index.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>"; 
                 }
                 ?>
             
