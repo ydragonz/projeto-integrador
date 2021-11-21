@@ -9,27 +9,27 @@
       die("Erro de conexão: ".$conn->connect_error);
     }
     else {
-      $nom_paciente = $_POST['nom_paciente'];
-      $sex_paciente = $_POST['sex_paciente'];
-      $end_paciente = $_POST['end_paciente'];
-      $bai_paciente = $_POST['bai_paciente'];
-      $com_paciente = $_POST['com_paciente'];
-      $cep_paciente = $_POST['cep_paciente'];
-      $cid_paciente = $_POST['cid_paciente'];
-      $uf_paciente = $_POST['uf_paciente'];
-      $dtn_paciente = date('Y-m-d', strtotime($_POST['dtn_paciente']));
-      $fone_paciente = $_POST['fone_paciente'];
-      $email_paciente = $_POST['email_paciente'];
-      $pes_paciente = $_POST['pes_paciente'];
-      $alt_paciente = $_POST['alt_paciente'];
-      $fuma_paciente = $_POST['fuma_paciente'];
-      $bebe_paciente = $_POST['bebe_paciente'];
-      $hiper_paciente = $_POST['hiper_paciente'];
-      $diab_paciente = $_POST['diab_paciente'];
-      $dac_paciente = $_POST['dac_paciente'];
-      $doe_paciente = $_POST['doe_paciente'];
-      $med_paciente = $_POST['med_paciente'];
-      $rem_paciente = $_POST['rem_paciente'];
+      $nom_paciente = mysqli_real_escape_string($conn, $_POST['nom_paciente']);
+      $sex_paciente = mysqli_real_escape_string($conn, $_POST['sex_paciente']);
+      $end_paciente = mysqli_real_escape_string($conn, $_POST['end_paciente']);
+      $bai_paciente = mysqli_real_escape_string($conn, $_POST['bai_paciente']);
+      $com_paciente = mysqli_real_escape_string($conn, $_POST['com_paciente']);
+      $cep_paciente = mysqli_real_escape_string($conn, $_POST['cep_paciente']);
+      $cid_paciente = mysqli_real_escape_string($conn, $_POST['cid_paciente']);
+      $uf_paciente = mysqli_real_escape_string($conn, $_POST['uf_paciente']);
+      $dtn_paciente = date('Y-m-d', strtotime(mysqli_real_escape_string($conn, $_POST['dtn_paciente'])));
+      $fone_paciente = mysqli_real_escape_string($conn, $_POST['fone_paciente']);
+      $email_paciente = mysqli_real_escape_string($conn, $_POST['email_paciente']);
+      $pes_paciente = mysqli_real_escape_string($conn, $_POST['pes_paciente']);
+      $alt_paciente = mysqli_real_escape_string($conn, $_POST['alt_paciente']);
+      $fuma_paciente = mysqli_real_escape_string($conn, $_POST['fuma_paciente']);
+      $bebe_paciente = mysqli_real_escape_string($conn, $_POST['bebe_paciente']);
+      $hiper_paciente = mysqli_real_escape_string($conn, $_POST['hiper_paciente']);
+      $diab_paciente = mysqli_real_escape_string($conn, $_POST['diab_paciente']);
+      $dac_paciente = mysqli_real_escape_string($conn, $_POST['dac_paciente']);
+      $doe_paciente = mysqli_real_escape_string($conn, $_POST['doe_paciente']);
+      $med_paciente = mysqli_real_escape_string($conn, $_POST['med_paciente']);
+      $rem_paciente = mysqli_real_escape_string($conn, $_POST['rem_paciente']);
 
       $sql = "INSERT INTO pacientes (cod_paciente, nom_paciente, sex_paciente, end_paciente, bai_paciente, com_paciente, cep_paciente, cid_paciente, uf_paciente, dtn_paciente, fone_paciente, email_paciente, pes_paciente, alt_paciente, fuma_paciente, bebe_paciente, hiper_paciente, diab_paciente, dac_paciente, doe_paciente, med_paciente, rem_paciente) 
               VALUES (NULL, '$nom_paciente', '$sex_paciente', '$end_paciente', '$bai_paciente', '$com_paciente', '$cep_paciente', '$cid_paciente', '$uf_paciente', '$dtn_paciente', '$fone_paciente', '$email_paciente', '$pes_paciente', '$alt_paciente', '$fuma_paciente', '$bebe_paciente', '$hiper_paciente', '$diab_paciente', '$dac_paciente', '$doe_paciente', '$med_paciente', '$rem_paciente')";
