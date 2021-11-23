@@ -20,7 +20,7 @@ $res = $conn->query($sql);
       ?>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
-    <a href="index.php?p=pacientes/new.php" type="button" class="btn btn-primary">Cadastrar</a>
+    <a href="index.php?p=pacientes/new.php" type="button" class="btn btn-success">Cadastrar</a>
 </div>
 
 <?php

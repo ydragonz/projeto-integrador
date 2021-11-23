@@ -4,7 +4,7 @@ include('config.php');
 $conn = new mysqli($host, $user, $password, $dbname);
 
 if($conn->connect_error){
-    die("Erro na conexão: ".$conn>connect_error);
+    die("Erro na conexão: ".$conn->connect_error);
 }
 
 $sql = "select * from exames order by num_exame";  //testando
@@ -13,7 +13,7 @@ $res = $conn->query($sql);
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Exames</h1>
-    <a href="index.php?p=usuarios/new.php" type="button" class="btn btn-primary">Cadastrar</a>
+    <a href="index.php?p=usuarios/new.php" type="button" class="btn btn-success">Cadastrar</a>
 </div>
 
 <?php
