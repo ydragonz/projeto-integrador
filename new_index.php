@@ -5,7 +5,7 @@ $conn = new mysqli($host, $user, $password, $dbname);
 session_start();
 
 if(isset($_POST['login_enviar'])) {
-  $login = mysqli_escape_string($conn, $_POST['id_login']);
+  $login = mysqli_escape_string($conn, $_POST['cod_login']);
   $senha = mysqli_escape_string($conn, $_POST['senha_login']);
 
   if(empty($login) || empty($senha)) {
@@ -17,10 +17,27 @@ if(isset($_POST['login_enviar'])) {
     <?php
   }
   else {
-    $sql = "SELECT cod_usuario FROM usuarios WHERE cod_login = '$login'";
+    $sql = "SELECT cod_usuario FROM usuarios WHERE cod_usuario = '$login'";
     $resultado = mysqli_query($conn, $sql);
+    
     if(mysqli_num_rows($resultado) > 0) {
+      $sql = "SELECT * FROM usuarios WHERE cod_usuario = '$login' AND sen_usuario = '$senha'";
+      $resultados = mysqli_query($conn, $sql);
 
+      if(mysqli_num_rows($resultado) == 1) {
+        $dados = mysqli_fetch_array($resultado);
+        $_SESSION['logado'] = true;
+        $_SESSION['cod_usuario'] = $dados['cod_usuario'];
+        header('Location: main.php');
+      }
+      else {
+        ?>
+        <div class="alert alert-danger" role="alert">
+          <h1>Usuário e/ou senha inválidos!</h1>
+          verifique e tente novamente, contate um administrador caso o problema persista.
+        </div>
+        <?php
+      }
     }
     else {
       ?>
@@ -57,7 +74,7 @@ if(isset($_POST['login_enviar'])) {
         <h1 class="h3 mb-3 fw-normal">Faça login</h1>
 
         <div class="form-floating">
-          <input name="id_login" type="text" class="form-control" id="floatingInput" placeholder="Exemplo: 1234" maxlength="6">
+          <input name="cod_login" type="text" class="form-control" id="floatingInput" placeholder="Exemplo: 1234" maxlength="6">
           <label for="floatingInput">Código</label>
         </div>
         <div class="form-floating">
