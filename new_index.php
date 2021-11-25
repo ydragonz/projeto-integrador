@@ -19,15 +19,16 @@ if(isset($_POST['login_enviar'])) {
   else {
     $sql = "SELECT cod_usuario FROM usuarios WHERE cod_usuario = '$login'";
     $resultado = mysqli_query($conn, $sql);
-    
+
     if(mysqli_num_rows($resultado) > 0) {
       $sql = "SELECT * FROM usuarios WHERE cod_usuario = '$login' AND sen_usuario = '$senha'";
-      $resultados = mysqli_query($conn, $sql);
+      $resultado = mysqli_query($conn, $sql);
 
       if(mysqli_num_rows($resultado) == 1) {
         $dados = mysqli_fetch_array($resultado);
         $_SESSION['logado'] = true;
         $_SESSION['cod_usuario'] = $dados['cod_usuario'];
+        $_SESSION['per_usuario'] = $dados['per_usuario'];
         header('Location: main.php');
       }
       else {
