@@ -13,7 +13,7 @@ CREATE TABLE usuarios (
     id_curso INT(4), 
     nom_usuario VARCHAR(40) NOT NULL, 
     dtn_usuario DATE NOT NULL, 
-    sen_usuario VARCHAR(10) NOT NULL, 
+    sen_usuario VARCHAR(32) NOT NULL, 
     per_usuario TINYINT(1) NOT NULL, 
     sts_usuario TINYINT(1) NOT NULL,
     PRIMARY KEY(cod_usuario)

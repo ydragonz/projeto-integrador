@@ -2,6 +2,7 @@
 require_once 'config.php';
 $conn = new mysqli($host, $user, $password, $dbname);
 
+session_start();
 
 if(isset($_POST['login_enviar'])) {
   $login = mysqli_escape_string($conn, $_POST['cod_login']);
@@ -20,7 +21,7 @@ if(isset($_POST['login_enviar'])) {
     $resultado = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($resultado) > 0) {
-      $sql = "SELECT * FROM usuarios WHERE cod_usuario = '$login' AND sen_usuario = '$senha'";
+      $sql = "SELECT * FROM usuarios WHERE cod_usuario = '$login' AND sen_usuario = MD5('$senha')";
       $resultado = mysqli_query($conn, $sql);
 
       if(mysqli_num_rows($resultado) == 1) {
@@ -28,6 +29,7 @@ if(isset($_POST['login_enviar'])) {
         $_SESSION['logado'] = true;
         $_SESSION['cod_usuario'] = $dados['cod_usuario'];
         $_SESSION['per_usuario'] = $dados['per_usuario'];
+        $_SESSION['sts_usuario'] = $dados['sts_usuario'];
         header('Location: main.php');
       }
       else {

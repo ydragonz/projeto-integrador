@@ -49,7 +49,7 @@
   </div>
   <div class="mb-3">
     <label for="nom_curso" class="form-label">Nome curso</label>
-    <input type="text" class="form-control" id="nom_curso" name="nom_curso">
+    <input type="text" class="form-control" id="nom_curso" name="nom_curso" maxlength="30">
   </div>
 
   <button type="submit" class="btn btn-success">Cadastrar</button>

@@ -63,7 +63,7 @@
     </div>
     <div class="mb-3">
       <label for="nom_curso" class="form-label">Nome curso</label>
-      <input type="text" class="form-control" name="nom_curso" id="nom_curso" value="<?=$dados[1];?>">
+      <input type="text" class="form-control" name="nom_curso" id="nom_curso" value="<?=$dados[1];?>" maxlength="30">
     </div>
 
   <button type="submit" name="submit" class="btn btn-success">Salvar</button>
