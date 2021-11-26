@@ -1,7 +1,7 @@
 <?php
-if($_SESSION['logado'] == 1) {
+if($_SESSION['logado'] == 1 && $_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-      include('config.php');
+      require_once 'config.php';
 
       //verificar a conexão
       $conn = new mysqli($host, $user, $password, $dbname);
@@ -64,7 +64,7 @@ if($_SESSION['logado'] == 1) {
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Novo usuário</h1>
   </div>
-  <form action="index.php?p=usuarios/new.php" method="post">
+  <form action="main.php?p=usuarios/new.php" method="post">
     <div class="mb-3">
       <label class="form-label">Código usuário</label>
       <input type="text" class="form-control" disabled>
@@ -109,7 +109,7 @@ if($_SESSION['logado'] == 1) {
       </select>
     </div>
     <button type="submit" class="btn btn-success">Cadastrar</button>
-    <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Voltar</a>
+    <a class="btn btn-secondary" href="main.php?p=usuarios/index.php" role="button">Voltar</a>
   </form>
 
 <?php

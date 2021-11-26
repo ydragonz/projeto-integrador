@@ -1,6 +1,6 @@
 <?php
 if($_SESSION['logado'] == 1) {
-      include('config.php');
+      require_once 'config.php';
 
       $conn = new mysqli($host, $user, $password, $dbname);
       if($conn->connect_error) {
@@ -39,7 +39,7 @@ if($_SESSION['logado'] == 1) {
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Visualizando usuário</h1>
   </div>
-  <form method="post" action="index.php?p=usuarios/detalhes.php">
+  <form method="post" action="main.php?p=usuarios/detalhes.php">
   <div class="mb-3">
     <div class="mb-3">
       <label class="form-label">ID usuário</label>
@@ -84,9 +84,13 @@ if($_SESSION['logado'] == 1) {
       </select>
     </div>
 
-    <?php echo "<td><a href='index.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr> "; 
-    echo "<td><a href='index.php?p=usuarios/detalhes.php&del=".$dados[0]."' class='btn btn-danger'>Excluir</a></tr>" ?>
-    <a class="btn btn-secondary" href="index.php?p=usuarios/index.php" role="button">Voltar</a>
+    <?php 
+    if($_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
+    echo "<td><a href='main.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr> "; 
+    echo "<td><a href='main.php?p=usuarios/detalhes.php&del=".$dados[0]."' class='btn btn-danger'>Excluir</a></tr>";
+    }
+    ?>
+    <a class="btn btn-secondary" href="main.php?p=usuarios/index.php" role="button">Voltar</a>
   </form>
 
 <?php 
@@ -95,13 +99,13 @@ if($_SESSION['logado'] == 1) {
 else {
   ?>
   <div class="alert alert-danger" role="alert">
-      <h1>
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-exclamation-octagon-fill" viewBox="0 0 16 16">
-          <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-      </svg>
-      Nenhum usuário logado!</h1>
-      -volte para a página inicial e faça login.
-      </div>
+    <h1>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-exclamation-octagon-fill" viewBox="0 0 16 16">
+      <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    Nenhum usuário logado!</h1>
+    -volte para a página inicial e faça login.
+  </div>
   <?php
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
-if($_SESSION['logado'] == 1) {
-      include('config.php');
+if($_SESSION['logado'] == 1 && $_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
+      require_once 'config.php';
       $conn = new mysqli($host, $user, $password, $dbname);
       if($conn->connect_error) {
           die("Erro na conexão: ".$conn->connect_error);
@@ -63,7 +63,7 @@ if($_SESSION['logado'] == 1) {
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Editando usuário</h1>
   </div>
-  <form method="post" action="index.php?p=usuarios/edit.php">
+  <form method="post" action="main.php?p=usuarios/edit.php">
     <div class="mb-3">
       <div class="mb-3">
         <label class="form-label">ID usuário</label>
@@ -110,7 +110,7 @@ if($_SESSION['logado'] == 1) {
     </div>
 
     <button type="submit" class="btn btn-success">Salvar</button>
-    <?php echo "<td><a href='index.php?p=usuarios/detalhes.php&id=".$dados[0]."' class='btn btn-secondary'>Cancelar</a></tr>" ?>
+    <?php echo "<td><a href='main.php?p=usuarios/detalhes.php&id=".$dados[0]."' class='btn btn-secondary'>Cancelar</a></tr>" ?>
   </form
 
 <?php 

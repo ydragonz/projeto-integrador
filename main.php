@@ -41,10 +41,21 @@
     ?>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Sair</a>
+        <a class="nav-link px-3" href="logout.php">Sair</a>
         </div>
     </div>
-    <?php } ?>
+    <?php 
+    }
+    else{
+    ?>
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+        <a class="nav-link px-3" href="index.php">Login</a>
+        </div>
+    </div>
+    <?php 
+    }
+    ?>
 
     </header>
 
