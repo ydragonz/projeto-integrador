@@ -2,7 +2,6 @@
 require_once 'config.php';
 $conn = new mysqli($host, $user, $password, $dbname);
 
-session_start();
 
 if(isset($_POST['login_enviar'])) {
   $login = mysqli_escape_string($conn, $_POST['cod_login']);
