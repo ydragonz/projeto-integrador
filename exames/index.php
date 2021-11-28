@@ -9,8 +9,45 @@ if($_SESSION['logado'] == 1) {
         die("Erro na conexão: ".$conn->connect_error);
     }
 
-    $sql = "SELECT * FROM exames ORDER BY num_exame";
+
+
+    
+
+
+
+    //$sql = "SELECT * FROM exames ORDER BY num_exame";
+    $sql = "SELECT * FROM cursos ORDER BY id_curso";
     $res = $conn->query($sql);
+    while($row = $res->fetch_assoc()) {
+
+    }
+    print_r();
+
+    
+    $result_array = Array();
+    while($res->fetch_assoc()) {
+        $result_array[] = $res;
+    }
+    //convert the PHP array into JSON format, so it works with javascript
+    $json_array = json_encode($result_array);
+?>
+
+<script>
+    //now put it into the javascript
+    var arrayObjects = <?php echo $json_array; ?>
+</script>
+
+
+
+
+
+
+
+
+
+
+<?php
+
     ?>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
