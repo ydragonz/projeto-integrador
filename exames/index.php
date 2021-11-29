@@ -11,7 +11,7 @@ if($_SESSION['logado'] == 1) {
 
 
 
-    
+
 
 
 
@@ -19,22 +19,19 @@ if($_SESSION['logado'] == 1) {
     $sql = "SELECT * FROM cursos ORDER BY id_curso";
     $res = $conn->query($sql);
     while($row = $res->fetch_assoc()) {
-
+        $result_array[] = $row;
     }
-    print_r();
 
-    
-    $result_array = Array();
-    while($res->fetch_assoc()) {
-        $result_array[] = $res;
-    }
-    //convert the PHP array into JSON format, so it works with javascript
-    $json_array = json_encode($result_array);
+    //$json_array = json_encode($result_array);
+    //echo $json_array;
 ?>
 
-<script>
+<script type="text/javascript">
     //now put it into the javascript
-    var arrayObjects = <?php echo $json_array; ?>
+    var arrayObjects = <?php echo json_encode($result_array); ?>
+    document.write (arrayObjects);
+    console.log(11);
+
 </script>
 
 
