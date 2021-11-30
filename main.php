@@ -25,6 +25,9 @@
         <meta name="author" content="Leonardo Bernardes de Oliveira, Sara Ferreira Fernandes e João Carneiro da Cunha">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
         <link href="css/dashboard.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
         <link rel="icon" href="imagens/unaerp_icon_mini.png">
         <title>Bem-Estar no Shopping</title>
     </head>
@@ -77,8 +80,17 @@
             </main>
         </div>
     </div>
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/feather.min.js"></script>
-    <script src="js/dashboard.js"></script>
+    
+        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+        
+      
     </body>
 </html>
+
+<script>
+$(document).ready( function () {
+    $('#tabela_exames').DataTable();
+} );
+</script>
+

@@ -7,13 +7,13 @@ if($_SESSION['logado'] == 1 && $_SESSION['per_usuario'] == 1 && $_SESSION['sts_u
       }
       else {
           if($_SERVER["REQUEST_METHOD"] == "POST") { 
-            $cod_usuario = $_POST['cod_usuario'];
-            $id_curso = $_POST['id_curso'];
-            $nom_usuario = $_POST['nom_usuario'];
+            $cod_usuario = mysqli_real_escape_string($conn, $_POST['cod_usuario']);
+            $id_curso = mysqli_real_escape_string($conn, $_POST['id_curso']);
+            $nom_usuario = mysqli_real_escape_string($conn, $_POST['nom_usuario']);
             $dtn_usuario = date('Y-m-d', strtotime($_POST['dtn_usuario']));
-            $sen_usuario = $_POST['sen_usuario'];
-            $per_usuario = $_POST['per_usuario'];
-            $sts_usuario = $_POST['sts_usuario'];
+            $sen_usuario = mysqli_real_escape_string($conn, $_POST['sen_usuario']);
+            $per_usuario = mysqli_real_escape_string($conn, $_POST['per_usuario']);
+            $sts_usuario = mysqli_real_escape_string($conn, $_POST['sts_usuario']);
 
             $sql = "UPDATE usuarios SET 
             cod_usuario='$cod_usuario', 

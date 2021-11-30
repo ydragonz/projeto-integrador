@@ -9,7 +9,7 @@ if($_SESSION['logado'] == 1 && $_SESSION['per_usuario'] == 1 && $_SESSION['sts_u
       die("Erro de conexão: ".$conn->connect_error);
     }
     else {
-      $nom_curso = $_POST['nom_curso'];
+      $nom_curso = mysqli_real_escape_string($conn, $_POST['nom_curso']);
 
       $sql = "INSERT INTO cursos (id_curso, nom_curso) VALUES (NULL, '$nom_curso')";
       if($conn->query($sql) === TRUE) {

@@ -19,7 +19,7 @@ if($_SESSION['logado'] == 1 && $_SESSION['per_usuario'] == 1 && $_SESSION['sts_u
       $cep_paciente = mysqli_real_escape_string($conn, $_POST['cep_paciente']);
       $cid_paciente = mysqli_real_escape_string($conn, $_POST['cid_paciente']);
       $uf_paciente = mysqli_real_escape_string($conn, $_POST['uf_paciente']);
-      $dtn_paciente = date('Y-m-d', strtotime(mysqli_real_escape_string($conn, $_POST['dtn_paciente'])));
+      $dtn_paciente = date('Y-m-d', strtotime($_POST['dtn_paciente']));
       $fone_paciente = mysqli_real_escape_string($conn, $_POST['fone_paciente']);
       $email_paciente = mysqli_real_escape_string($conn, $_POST['email_paciente']);
       $pes_paciente = mysqli_real_escape_string($conn, $_POST['pes_paciente']);

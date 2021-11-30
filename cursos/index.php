@@ -55,7 +55,7 @@ if($_SESSION['logado'] == 1) {
         ?>
         <div class="table-responsive">
             <table class="table table-striped table-sm">
-            <thead>
+                <thead>
                     <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>

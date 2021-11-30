@@ -9,42 +9,8 @@ if($_SESSION['logado'] == 1) {
         die("Erro na conexão: ".$conn->connect_error);
     }
 
-
-
-
-
-
-
-    //$sql = "SELECT * FROM exames ORDER BY num_exame";
-    $sql = "SELECT * FROM cursos ORDER BY id_curso";
+    $sql = "SELECT * FROM exames ORDER BY num_exame";
     $res = $conn->query($sql);
-    while($row = $res->fetch_assoc()) {
-        $result_array[] = $row;
-    }
-
-    //$json_array = json_encode($result_array);
-    //echo $json_array;
-?>
-
-<script type="text/javascript">
-    //now put it into the javascript
-    var arrayObjects = <?php echo json_encode($result_array); ?>
-    document.write (arrayObjects);
-    console.log(11);
-
-</script>
-
-
-
-
-
-
-
-
-
-
-<?php
-
     ?>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -75,17 +41,39 @@ if($_SESSION['logado'] == 1) {
     if($res->num_rows>0){
         ?>
         <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm" id="tabela_exames">
                 <thead>
                     <tr>
-                    
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>Cadastrado por</th>
+                        <th>Data exame</th>
+                        <th>P.A. diastolica</th>
+                        <th>P.A. sistolica</th>
+                        <th>Glicemia</th>
+                        <th>Colesterol</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php
                     while($row = $res->fetch_assoc()){
-                        
+                        echo "<tr>
+                            <td>".$row['num_exame']."</td>
+                            <td>".$row['cod_paciente']."</td>
+                            <td>".$row['cod_usuario']."</td>
+                            <td>".$row['dta_exame']."</td>
+                            <td>".$row['pad_exame']."</td>
+                            <td>".$row['pas_exame']."</td>
+                            <td>".$row['gli_exame']."</td>
+                            <td>".$row['col_exame']."</td>";
+                        if($_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
+                            echo "<td><a href='main.php?p=exames/edit.php&id=".$row['num_exame']."' class='btn btn-primary btn-sm'>Editar</a>
+                                <a href='main.php?p=exames/index.php&del=".$row['num_exame']."' class='btn btn-danger btn-sm'>Excluir</a></tr>";
+                        }
+                        else {
+                            echo "</tr>";
+                        }
                     }
                     ?>
                 
@@ -122,3 +110,4 @@ else {
   <?php
 }
 ?>
+
