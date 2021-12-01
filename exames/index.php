@@ -54,7 +54,7 @@ if($_SESSION['logado'] == 1) {
                         <th>Colesterol</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
 
                     <?php
                     while($row = $res->fetch_assoc()){
@@ -68,8 +68,7 @@ if($_SESSION['logado'] == 1) {
                             <td>".$row['gli_exame']."</td>
                             <td>".$row['col_exame']."</td>";
                         if($_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
-                            echo "<td><a href='main.php?p=exames/edit.php&id=".$row['num_exame']."' class='btn btn-primary btn-sm'>Editar</a>
-                                <a href='main.php?p=exames/index.php&del=".$row['num_exame']."' class='btn btn-danger btn-sm'>Excluir</a></tr>";
+                            echo "<td><a href='main.php?p=exames/detalhes.php&id=".$row['num_exame']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>";
                         }
                         else {
                             echo "</tr>";

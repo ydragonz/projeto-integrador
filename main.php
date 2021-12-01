@@ -28,6 +28,8 @@
         <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
         <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
+        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
         <link rel="icon" href="imagens/unaerp_icon_mini.png">
         <title>Bem-Estar no Shopping</title>
     </head>
@@ -75,14 +77,14 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <?php
                 include($arquivo);
+                //include('teste.php');
             ?>
 
             </main>
         </div>
     </div>
     
-        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
+        
         
       
     </body>
@@ -90,7 +92,7 @@
 
 <script>
 $(document).ready( function () {
-    $('#tabela_exames').DataTable();
+    $('#myTable2').DataTable();
 } );
 </script>
 

@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION['logado'] == 1 && $_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
+if($_SESSION['logado'] == 1 && $_SESSION['sts_usuario'] == 1) {
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     require_once 'config.php';
