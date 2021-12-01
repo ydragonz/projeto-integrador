@@ -35,64 +35,62 @@
     </head>
     <body>
 
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="main.php"><img src="imagens/unaerp_icon.png"> Bem-Estar</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="main.php"><img src="imagens/unaerp_icon.png"> Bem-Estar</a>
+            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
 
-    </button>
-    
-    <?php
-    if($_SESSION['logado'] == 1) {
-    ?>
-    <div class="navbar-nav">
-
-        <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="logout.php">Sair </a>
-        </div>
-    </div>
-    <?php 
-    }
-    else{
-    ?>
-    <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="index.php">Login </a>
-        </div>
-    </div>
-    <?php 
-    }
-    ?>
-
-    </header>
-
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
-            <?php 
-                include('menu.php');
-            ?>
-            </nav>
-
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            </button>
+            
             <?php
-                include($arquivo);
-                //include('teste.php');
+            if($_SESSION['logado'] == 1) {
             ?>
+            <div class="navbar-nav">
 
-            </main>
+                <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="logout.php">Sair </a>
+                </div>
+            </div>
+            <?php 
+            }
+            else{
+            ?>
+            <div class="navbar-nav">
+                <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="index.php">Login </a>
+                </div>
+            </div>
+            <?php 
+            }
+            ?>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <?php 
+                    include('menu.php');
+                ?>
+                </nav>
+
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <?php
+                    include($arquivo);
+                ?>
+
+                </main>
+            </div>
         </div>
-    </div>
-    
-        
-        
-      
     </body>
 </html>
 
 <script>
 $(document).ready( function () {
-    $('#myTable2').DataTable();
+    $('#tabela_usuarios').DataTable();
+    $('#tabela_pacientes').DataTable();
+    $('#tabela_cursos').DataTable();
+    $('#tabela_exames').DataTable();
+    $('#tabela_exames_paciente').DataTable();
 } );
 </script>
 

@@ -9,28 +9,21 @@ if($_SESSION['logado'] == 1) {
         die("Erro na conexão: ".$conn->connect_error);
     }
 
-    $sql = "select * from pacientes order by cod_paciente";
+    $sql = "SELECT * FROM pacientes ORDER BY cod_paciente";
     $res = $conn->query($sql);
     ?>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Pacientes</h1>
-        <form class="form-inline my-2 my-lg-0 position-relative" action="index.php?p=pacientes/index.php" method="GET">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar pelo ID do paciente" aria-label="Search">
         <?php
-        echo "<a href='main.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a>"
-        ?>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
-        <?php
-        if($_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario']) {
+        if($_SESSION['sts_usuario']) {
         ?>
         <a href="main.php?p=pacientes/new.php" type="button" class="btn btn-success">Cadastrar</a>
         <?php } ?>
     </div>
 
     <?php
-    if(!$_SESSION['sts_usuario'] == 1) {
+    if(!$_SESSION['sts_usuario']) {
         ?>
         <div class="alert alert-warning d-flex align-items-center" role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
@@ -45,7 +38,7 @@ if($_SESSION['logado'] == 1) {
     if($res->num_rows>0){
         ?>
         <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm" id="tabela_pacientes">
             <thead>
                     <tr>
                     <th scope="col">ID</th>
@@ -53,7 +46,7 @@ if($_SESSION['logado'] == 1) {
                     <th scope="col">Sexo</th>
                     <th scope="col">Cidade</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Data de nasc.</th>
+                    <th scope="col">Data de nascimento</th>
                     <th scope="col">Telefone</th>
                     <th></th>
                     </tr>
@@ -78,11 +71,11 @@ if($_SESSION['logado'] == 1) {
                                 <td>".$row['uf_paciente']."</td>
                                 <td>".$row['dtn_paciente']."</td>
                                 <td>".$row['fone_paciente']."</td>"; 
-                            if($_SESSION['per_usuario'] == 1) {
-                                echo "<td><a href='main.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>";
+                            if($_SESSION['sts_usuario']) {
+                                echo "<td><a href='main.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>";
                             }
                             else {
-                                echo "</tr>";
+                                echo "<td></td></tr>";
                             }
                         }
                     }
@@ -104,7 +97,7 @@ if($_SESSION['logado'] == 1) {
                                 <td>".$row['uf_paciente']."</td>
                                 <td>".$row['dtn_paciente']."</td>
                                 <td>".$row['fone_paciente']."</td>
-                                <td><a href='main.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>"; 
+                                <td><a href='main.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>"; 
                     }
                     
                     ?>

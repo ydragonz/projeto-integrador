@@ -1,4 +1,5 @@
 <?php
+
 if($_SESSION['logado'] == 1) {
     require_once 'config.php';
 
@@ -15,7 +16,7 @@ if($_SESSION['logado'] == 1) {
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Usuários</h1>
         <?php
-        if($_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
+        if($_SESSION['sts_usuario'] && $_SESSION['per_usuario']) {
         ?>
         <a href="main.php?p=usuarios/new.php" type="button" class="btn btn-success">Cadastrar</a>
         <?php } ?>
@@ -24,6 +25,7 @@ if($_SESSION['logado'] == 1) {
     <?php
     if(!$_SESSION['sts_usuario'] == 1) {
         ?>
+        <br>
         <div class="alert alert-warning d-flex align-items-center" role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                 <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -46,6 +48,7 @@ if($_SESSION['logado'] == 1) {
                     <th scope="col">Data de nascimento</th>
                     <th scope="col">Cargo</th>
                     <th scope="col">Status</th>
+                    <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,100 +76,23 @@ if($_SESSION['logado'] == 1) {
                             <td>".$row['dtn_usuario']."</td>
                             <td>".$adm."</td>
                             <td>".$status."</td>";
-                        if($_SESSION['per_usuario'] == 1) {
-                            echo "<td><a href='main.php?p=usuarios/detalhes.php&id=".$row['cod_usuario']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>";
+                        if($_SESSION['sts_usuario'] == 1) {
+                            echo "<td><a href='main.php?p=usuarios/detalhes.php&id=".$row['cod_usuario']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>";
                         }
                         else {
-                            echo "</tr>";
+                            echo "<td></td></tr>";
                         }
                     }
                     ?>
                 
                 </tbody>
             </table>
-            
-<table id="myTable2" class="display" cellspacing="0" width="100%">
-  <thead>
-      <tr>
-          <th>Name</th>
-          <th>Position</th>
-          <th>Office</th>
-          <th>Age</th>
-          <th>Salary</th>
-      </tr>
-  </thead> 
-  <tbody>
-      <tr>
-          <td>Tiger Nixon</td>
-          <td>System Architect</td>
-          <td>Edinburgh</td>
-          <td>61</td>
-          <td>$320,800</td>
-      </tr>
-      <tr>
-          <td>Cedric Kelly</td>
-          <td>Senior Javascript Developer</td>
-          <td>Edinburgh</td>
-          <td>22</td>
-          <td>$433,060</td>
-      </tr>
-      <tr>
-          <td>Sonya Frost</td>
-          <td>Software Engineer</td>
-          <td>Edinburgh</td>
-          <td>23</td>
-          <td>$103,600</td>
-      </tr>
-      <tr>
-          <td>Quinn Flynn</td>
-          <td>Support Lead</td>
-          <td>Edinburgh</td>
-          <td>22</td>
-          <td>$342,000</td>
-      </tr>
-      <tr>
-          <td>Dai Rios</td>
-          <td>Personnel Lead</td>
-          <td>Edinburgh</td>
-          <td>35</td>
-          <td>$217,500</td>
-      </tr>
-      <tr>
-          <td>Gavin Joyce</td>
-          <td>Developer</td>
-          <td>Edinburgh</td>
-          <td>42</td>
-          <td>$92,575</td>
-      </tr>
-      <tr>
-          <td>Martena Mccray</td>
-          <td>Post-Sales support</td>
-          <td>Edinburgh</td>
-          <td>46</td>
-          <td>$324,050</td>
-      </tr>
-      <tr>
-          <td>Jennifer Acosta</td>
-          <td>Junior Javascript Developer</td>
-          <td>Edinburgh</td>
-          <td>43</td>
-          <td>$75,650</td>
-      </tr>
-      <tr>
-          <td>Shad Decker</td>
-          <td>Regional Director</td>
-          <td>Edinburgh</td>
-          <td>51</td>
-          <td>$183,000</td>
-      </tr>
-  </tbody>
-</table>
-
         </div>
     <?php
     }
     else {
         ?>
+        <br>
         <div class="alert alert-warning d-flex align-items-center" role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
                 <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -182,6 +108,7 @@ if($_SESSION['logado'] == 1) {
 }
 else {
     ?>
+    <br>
     <div class="alert alert-danger" role="alert">
         <h2>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-octagon-fill" viewBox="0 0 16 16">

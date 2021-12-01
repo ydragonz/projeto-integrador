@@ -1,5 +1,5 @@
 <?php
-if($_SESSION['logado'] == 1 && $_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1 ) {
+if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
     require_once 'config.php';
 
     $conn = new mysqli($host, $user, $password, $dbname);
@@ -44,9 +44,7 @@ if($_SESSION['logado'] == 1 && $_SESSION['per_usuario'] == 1 && $_SESSION['sts_u
             $result = $stmt->get_result();
             
             $dados = $result->fetch_row() ;
-            
         }
-
     }
 
   if(!isset($_POST["nom_curso"])) {
@@ -77,6 +75,7 @@ if($_SESSION['logado'] == 1 && $_SESSION['per_usuario'] == 1 && $_SESSION['sts_u
 }
 else {
   ?>
+  <br>
   <div class="alert alert-danger" role="alert">
     <h2>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-octagon-fill" viewBox="0 0 16 16">

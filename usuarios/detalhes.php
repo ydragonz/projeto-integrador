@@ -25,7 +25,7 @@ if($_SESSION['logado'] == 1) {
 
           if(isset($_GET['id'])) {
             $id = $_GET['id'];
-            $sql = "select * from usuarios where cod_usuario = ?";
+            $sql = "SELECT * FROM usuarios WHERE cod_usuario = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $id);
             $stmt->execute();
@@ -39,7 +39,7 @@ if($_SESSION['logado'] == 1) {
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Visualizando usuário</h1>
   </div>
-  <form method="post" action="main.php?p=usuarios/detalhes.php">
+  <form method="POST" action="main.php?p=usuarios/detalhes.php">
   <div class="mb-3">
     <div class="mb-3">
       <label class="form-label">ID usuário</label>
@@ -85,9 +85,9 @@ if($_SESSION['logado'] == 1) {
     </div>
 
     <?php 
-    if($_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
-    echo "<td><a href='main.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a></tr> "; 
-    echo "<td><a href='main.php?p=usuarios/detalhes.php&del=".$dados[0]."' class='btn btn-danger'>Excluir</a></tr>";
+    if($_SESSION['per_usuario'] && $_SESSION['sts_usuario']) {
+    echo "<a href='main.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a>"; 
+    echo "<a href='main.php?p=usuarios/detalhes.php&del=".$dados[0]."' class='btn btn-danger'>Excluir</a>";
     }
     ?>
     <a class="btn btn-secondary" href="main.php?p=usuarios/index.php" role="button">Voltar</a>

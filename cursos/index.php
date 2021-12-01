@@ -1,4 +1,5 @@
 <?php
+
 if($_SESSION['logado'] == 1) {
     require_once 'config.php';
 
@@ -15,7 +16,7 @@ if($_SESSION['logado'] == 1) {
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Cursos</h1>
         <?php
-        if($_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
+        if($_SESSION['sts_usuario']) {
             ?>
             <a href="main.php?p=cursos/new.php" type="button" class="btn btn-success">Cadastrar</a>
             <?php
@@ -24,7 +25,7 @@ if($_SESSION['logado'] == 1) {
     </div>
 
     <?php
-    if(!$_SESSION['sts_usuario'] == 1) {
+    if(!$_SESSION['sts_usuario']) {
         ?>
         <div class="alert alert-warning d-flex align-items-center" role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
@@ -54,11 +55,12 @@ if($_SESSION['logado'] == 1) {
     if($res->num_rows>0){
         ?>
         <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm" id="tabela_cursos">
                 <thead>
                     <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
+                    <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,12 +70,12 @@ if($_SESSION['logado'] == 1) {
                         echo "<tr>
                             <td>".$row['id_curso']."</td>
                             <td>".$row['nom_curso']."</td>";
-                        if($_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
+                        if($_SESSION['sts_usuario']) {
                             echo "<td><a href='main.php?p=cursos/edit.php&id=".$row['id_curso']."' class='btn btn-primary btn-sm'>Editar</a>
-                                <a href='main.php?p=cursos/index.php&del=".$row['id_curso']."' class='btn btn-danger btn-sm'>Excluir</a></tr>";
+                                <a href='main.php?p=cursos/index.php&del=".$row['id_curso']."' class='btn btn-danger btn-sm'>Excluir</a></td></tr>";
                         }
                         else {
-                            echo "</tr>";
+                            echo "<td></td></tr>";
                         }
                     }
                     ?>

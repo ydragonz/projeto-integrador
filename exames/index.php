@@ -1,6 +1,6 @@
 <?php
-if($_SESSION['logado'] == 1) {
 
+if($_SESSION['logado'] == 1) {
     require_once 'config.php';
 
     $conn = new mysqli($host, $user, $password, $dbname);
@@ -68,10 +68,10 @@ if($_SESSION['logado'] == 1) {
                             <td>".$row['gli_exame']."</td>
                             <td>".$row['col_exame']."</td>";
                         if($_SESSION['per_usuario'] == 1 && $_SESSION['sts_usuario'] == 1) {
-                            echo "<td><a href='main.php?p=exames/detalhes.php&id=".$row['num_exame']."' class='btn btn-secondary btn-sm'>Detalhes</a></tr>";
+                            echo "<td><a href='main.php?p=exames/detalhes.php&id=".$row['num_exame']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>";
                         }
                         else {
-                            echo "</tr>";
+                            echo "<td></td></tr>";
                         }
                     }
                     ?>
