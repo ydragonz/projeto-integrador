@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION['logado'] == 1) {
+if($_SESSION['logado']) {
     require_once 'config.php';
 
     $conn = new mysqli($host, $user, $password, $dbname);
