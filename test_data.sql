@@ -14,5 +14,6 @@ insert into usuarios values
 	(null, 2, 'Lucas', '2006-05-22', 'senha123', 0, 0),
 	(null, 6, 'Ismael', '2003-05-22', 'senha123', 0, 1),
 	(null, 8, 'Alex', '2000-03-20', 'senha123', 1, 1),
-	(null, 5, 'Enzo', '2005-12-10', 'senha123', 0, 0);
+	(null, 4, 'Maxwell', '2002-03-20', 'senha123', 1, 1),
+	(null, 5, 'Enzo', '2005-12-10', 'senha123', 1, 0);
 
