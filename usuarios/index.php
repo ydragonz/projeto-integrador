@@ -107,7 +107,6 @@ if($_SESSION['logado'] == 1) {
 }
 else {
     ?>
-    <br>
     <div class="alert alert-danger" role="alert">
         <h2>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-octagon-fill" viewBox="0 0 16 16">
