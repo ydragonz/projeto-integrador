@@ -9,7 +9,11 @@ if($_SESSION['logado']) {
         die("Erro na conexão: ".$conn->connect_error);
     }
 
-    $sql = "SELECT * FROM exames ORDER BY num_exame";
+    
+    //$sql = "SELECT * FROM exames ORDER BY num_exame";
+    $sql = "SELECT * FROM exames e 
+    INNER JOIN pacientes p ON e.cod_paciente=p.cod_paciente
+    INNER JOIN usuarios u ON e.cod_usuario=u.cod_usuario";
     $res = $conn->query($sql);
     ?>
 
@@ -62,8 +66,8 @@ if($_SESSION['logado']) {
                     while($row = $res->fetch_assoc()){
                         echo "<tr>
                             <td>".$row['num_exame']."</td>
-                            <td>".$row['cod_paciente']."</td>
-                            <td>".$row['cod_usuario']."</td>
+                            <td>".$row['nom_paciente']."</td>
+                            <td>".$row['nom_usuario']."</td>
                             <td>".$row['dta_exame']."</td>
                             <td>".$row['pad_exame']."</td>
                             <td>".$row['pas_exame']."</td>
