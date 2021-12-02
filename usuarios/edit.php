@@ -16,7 +16,6 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario'] && $_SESSION['per_usuario']) 
             $sts_usuario = mysqli_real_escape_string($conn, $_POST['sts_usuario']);
 
             $sql = "UPDATE usuarios SET 
-            cod_usuario='$cod_usuario', 
             id_curso='$id_curso', 
             nom_usuario='$nom_usuario',
             dtn_usuario='$dtn_usuario',
@@ -34,9 +33,10 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario'] && $_SESSION['per_usuario']) 
                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                 </svg> 
                 Usuário editado com sucesso!</h2>
-                volte para a página anterior e atualize a página.
+                clique no botão abaixo para atualizar a página e ver os resultados.
               </div>
               <?php
+              echo "<td><a href='main.php?p=usuarios/index.php' class='btn btn-secondary'>Atualizar</a></tr>";
             }
             else {
               ?>
@@ -130,8 +130,9 @@ else {
           <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
       </svg>
       Acesso negado!</h2>
-      volte para a página anterior.
+      clique no botão abaixo para voltar.
   </div>
   <?php
+  echo "<td><a href='main.php?p=usuarios/index.php' class='btn btn-secondary'>Área de login</a></tr>";
 }
 ?>
