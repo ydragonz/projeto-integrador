@@ -183,7 +183,10 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
 
   <?php 
   $cod_busca = $dados[0];
-  $sql = "SELECT * FROM exames WHERE cod_paciente = '$cod_busca'";
+  $sql = "SELECT * FROM exames e 
+  INNER JOIN pacientes p ON e.cod_paciente=p.cod_paciente
+  INNER JOIN usuarios u ON e.cod_usuario=u.cod_usuario";
+  //$sql = "SELECT * FROM exames WHERE cod_paciente = '$cod_busca'";
   $res = $conn->query($sql);
 
   if($res->num_rows>0){
@@ -209,8 +212,8 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
                     while($row = $res->fetch_assoc()){
                         echo "<tr>
                             <td>".$row['num_exame']."</td>
-                            <td>".$row['cod_paciente']."</td>
-                            <td>".$row['cod_usuario']."</td>
+                            <td>".$row['nom_paciente']."</td>
+                            <td>".$row['nom_usuario']."</td>
                             <td>".$row['dta_exame']."</td>
                             <td>".$row['pad_exame']."</td>
                             <td>".$row['pas_exame']."</td>
