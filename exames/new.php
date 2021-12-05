@@ -47,7 +47,7 @@ if($_SESSION['logado'] == 1 && $_SESSION['sts_usuario'] == 1) {
       }
     }
   }
-  if(!isset($_POST["id_curso"])) {
+  if(!isset($_POST["enviar"])) {
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -85,7 +85,7 @@ if($_SESSION['logado'] == 1 && $_SESSION['sts_usuario'] == 1) {
     <input type="text" class="form-control" id="col_exame" name="col_exame" maxlength="40">
   </div>
 
-  <button type="submit" class="btn btn-success">Cadastrar</button>
+  <button type="submit" class="btn btn-success" name="enviar">Cadastrar</button>
   <a class="btn btn-secondary" href="main.php?p=exames/index.php" role="button">Voltar</a>
 </form>
 

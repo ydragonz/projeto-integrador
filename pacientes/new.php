@@ -44,7 +44,7 @@ if($_SESSION['logado'] == 1 && $_SESSION['sts_usuario'] == 1) {
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
           </svg> 
-          Paciente criado com sucesso!</h2>
+          Paciente cadastrado com sucesso!</h2>
           clique no botão abaixo para atualizar a página e ver os resultados.
             </div>
             <?php
@@ -62,7 +62,7 @@ if($_SESSION['logado'] == 1 && $_SESSION['sts_usuario'] == 1) {
       }
     }
   }
-  if(!isset($_POST["id_curso"])) {
+  if(!isset($_POST["enviar"])) {
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -194,8 +194,9 @@ if($_SESSION['logado'] == 1 && $_SESSION['sts_usuario'] == 1) {
     <input type="text" class="form-control" id="rem_paciente" name="rem_paciente" maxlength="100">
   </div>
 
-  <button type="submit" class="btn btn-success">Cadastrar</button>
+  <button type="submit" class="btn btn-success" name="enviar">Cadastrar</button>
   <a class="btn btn-secondary" href="main.php?p=pacientes/index.php" role="button">Voltar</a>
+  <br><br>
 </form>
 
 <?php 

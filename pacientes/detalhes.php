@@ -167,10 +167,8 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
   </div>
 
   <?php 
-    if($_SESSION['sts_usuario']) {
     echo "<a href='main.php?p=pacientes/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a>"; 
     echo "<a href='main.php?p=pacientes/detalhes.php&del=".$dados[0]."' class='btn btn-danger'>Excluir</a>";
-    }
     ?>
     <a class="btn btn-secondary" href="main.php?p=pacientes/index.php" role="button">Voltar</a>
   </form>
@@ -185,8 +183,8 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
   $cod_busca = $dados[0];
   $sql = "SELECT * FROM exames e 
   INNER JOIN pacientes p ON e.cod_paciente=p.cod_paciente
-  INNER JOIN usuarios u ON e.cod_usuario=u.cod_usuario";
-  //$sql = "SELECT * FROM exames WHERE cod_paciente = '$cod_busca'";
+  INNER JOIN usuarios u ON e.cod_usuario=u.cod_usuario
+  WHERE e.cod_paciente = '$dados[0]'";
   $res = $conn->query($sql);
 
   if($res->num_rows>0){

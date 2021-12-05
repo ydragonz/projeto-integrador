@@ -41,7 +41,6 @@ if($_SESSION['logado']) {
         $id = $_GET['del'];
         $conn->query("DELETE FROM cursos WHERE id_curso=$id");
         ?>
-        <br>
         <div class="alert alert-success" role="alert">
             <h2>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
