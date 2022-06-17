@@ -9,7 +9,7 @@ if($_SESSION['logado'] == 1) {
         die("Erro na conexão: ".$conn->connect_error);
     }
 
-    $sql = "SELECT * FROM usuarios u INNER JOIN cursos c ON u.id_curso=c.id_curso ORDER BY cod_usuario";
+    $sql = "SELECT * FROM usuarios ORDER BY nom_usuario";
     $res = $conn->query($sql);
     ?>
 
@@ -41,11 +41,10 @@ if($_SESSION['logado'] == 1) {
             <table class="table table-striped table-sm" id="tabela_usuarios">
                 <thead>
                     <tr>
-                    <th scope="col">Código</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Curso</th>
+                    <th scope="col">E-mail</th>
                     <th scope="col">Data de nascimento</th>
-                    <th scope="col">Cargo</th>
+                    <th scope="col">Função</th>
                     <th scope="col">Status</th>
                     <th></th>
                     </tr>
@@ -55,7 +54,7 @@ if($_SESSION['logado'] == 1) {
                     <?php
                     while($row = $res->fetch_assoc()){
                         $status="";
-                        $adm="";
+                        $funcao="";
                         if($row['sts_usuario']==1) {
                             $status="Ativo";
                         }
@@ -63,17 +62,16 @@ if($_SESSION['logado'] == 1) {
                             $status="Inativo";
                         }
                         if($row['per_usuario']==1) {
-                            $adm="Administrador";
+                            $funcao="Professor";
                         }
                         else {
-                            $adm="Comum";
+                            $funcao="Comum";
                         }
                         echo "<tr>
-                            <td>".$row['cod_usuario']."</td>
                             <td>".$row['nom_usuario']."</td>
-                            <td>".$row['nom_curso']."</td>
+                            <td>".$row['log_usuario']."</td>
                             <td>".$row['dtn_usuario']."</td>
-                            <td>".$adm."</td>
+                            <td>".$funcao."</td>
                             <td>".$status."</td>";
                         if($_SESSION['sts_usuario'] == 1) {
                             echo "<td><a href='main.php?p=usuarios/detalhes.php&id=".$row['cod_usuario']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>";

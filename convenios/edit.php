@@ -8,10 +8,10 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
     }
     else {
         if($_SERVER["REQUEST_METHOD"] == "POST") { 
-          $id_curso = $_POST['id_curso'];
-          $nom_curso = $_POST['nom_curso'];
+          $id_convenio = $_POST['id_convenio'];
+          $nom_convenio = $_POST['nom_convenio'];
 
-          $sql = "UPDATE cursos SET nom_curso = '$nom_curso' WHERE id_curso = '$id_curso'";
+          $sql = "UPDATE convenios SET nom_convenio = '$nom_convenio' WHERE id_convenio = '$id_convenio'";
           if($conn->query($sql) === TRUE) {
             ?>
             <br>
@@ -20,11 +20,11 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
               </svg>  
-              Curso editado com sucesso!</h2>
+              convenio editado com sucesso!</h2>
               clique no botão abaixo para atualizar a página e ver os resultados.
             </div>
             <?php
-            echo "<td><a href='main.php?p=cursos/index.php' class='btn btn-secondary'>Atualizar</a></tr>";
+            echo "<td><a href='main.php?p=convenios/index.php' class='btn btn-secondary'>Atualizar</a></tr>";
           }
           else {
             ?>
@@ -38,7 +38,7 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
         }
         else {
             $id = $_GET['id'];
-            $sql = "select * from cursos where id_curso = ?";
+            $sql = "select * from convenios where id_convenio = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $id);
             $stmt->execute();
@@ -48,28 +48,21 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
         }
     }
 
-  if(!isset($_POST["nom_curso"])) {
+  if(!isset($_POST["nom_convenio"])) {
 ?>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Editando curso</h1>
+    <h1 class="h2">Editando convenio</h1>
 </div>
-<form action="main.php?p=cursos/edit.php" method="POST">
-  <div class="mb-3">
+<form action="main.php?p=convenios/edit.php" method="POST">
+  
     <div class="mb-3">
-      <label class="form-label">ID curso</label>
-      <input type="text" class="form-control" name="id_curso" id="id_curso" value="<?=$dados[0];?>" readonly>
-      <div id="helpIdCurso" class="form-text">
-          O ID do curso é gerado automaticamente pelo sistema.
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="nom_curso" class="form-label">Nome curso</label>
-      <input type="text" class="form-control" name="nom_curso" id="nom_curso" value="<?=$dados[1];?>" maxlength="30">
+      <label for="nom_convenio" class="form-label">Nome convenio</label>
+      <input type="text" class="form-control" name="nom_convenio" id="nom_convenio" value="<?=$dados[1];?>" maxlength="30">
     </div>
 
   <button type="submit" name="submit" class="btn btn-success">Salvar</button>
-  <a class="btn btn-secondary" href="main.php?p=cursos/index.php" role="button">Cancelar</a>
-</form
+  <a class="btn btn-secondary" href="main.php?p=convenios/index.php" role="button">Cancelar</a>
+  </form>
 
 <?php 
   } 

@@ -17,11 +17,11 @@ if(isset($_POST['login_enviar'])) {
     <?php
   }
   else {
-    $sql = "SELECT cod_usuario FROM usuarios WHERE cod_usuario = '$login'";
+    $sql = "SELECT log_usuario FROM usuarios WHERE log_usuario = '$login'";
     $resultado = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($resultado) > 0) {
-      $sql = "SELECT * FROM usuarios WHERE cod_usuario = '$login' AND sen_usuario = MD5('$senha')";
+      $sql = "SELECT * FROM usuarios WHERE log_usuario = '$login' AND sen_usuario = MD5('$senha')";
       $resultado = mysqli_query($conn, $sql);
 
       if(mysqli_num_rows($resultado) == 1) {
@@ -76,8 +76,8 @@ if(isset($_POST['login_enviar'])) {
         <h1 class="h3 mb-3 fw-normal">Faça login</h1>
 
         <div class="form-floating">
-          <input name="cod_login" type="text" class="form-control" id="floatingInput" placeholder="Exemplo: 1234" maxlength="6">
-          <label for="floatingInput">Código</label>
+          <input name="cod_login" type="text" class="form-control" id="floatingInput" maxlength="60">
+          <label for="floatingInput">E-mail</label>
         </div>
         <div class="form-floating">
           <input name="senha_login" type="password" class="form-control" id="floatingPassword" placeholder="Sua senha" maxlength="10">

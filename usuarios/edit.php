@@ -8,17 +8,17 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario'] && $_SESSION['per_usuario']) 
       else {
           if($_SERVER["REQUEST_METHOD"] == "POST") { 
             $cod_usuario = mysqli_real_escape_string($conn, $_POST['cod_usuario']);
-            $id_curso = mysqli_real_escape_string($conn, $_POST['id_curso']);
             $nom_usuario = mysqli_real_escape_string($conn, $_POST['nom_usuario']);
             $dtn_usuario = date('Y-m-d', strtotime($_POST['dtn_usuario']));
+            $log_usuario = mysqli_real_escape_string($conn, $_POST['log_usuario']);
             $sen_usuario = mysqli_real_escape_string($conn, $_POST['sen_usuario']);
             $per_usuario = mysqli_real_escape_string($conn, $_POST['per_usuario']);
             $sts_usuario = mysqli_real_escape_string($conn, $_POST['sts_usuario']);
 
             $sql = "UPDATE usuarios SET 
-            id_curso='$id_curso', 
             nom_usuario='$nom_usuario',
             dtn_usuario='$dtn_usuario',
+            log_usuario='$log_usuario',
             sen_usuario=MD5('$sen_usuario'),
             per_usuario='$per_usuario',
             sts_usuario='$sts_usuario'
@@ -63,61 +63,47 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario'] && $_SESSION['per_usuario']) 
 
       }
 
-    if(!isset($_POST["id_curso"])) {
+    if(!isset($_POST["log_usuario"])) {
   ?>
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Editando usuário</h1>
   </div>
-  <form method="post" action="main.php?p=usuarios/edit.php">
-    <div class="mb-3">
-      <div class="mb-3">
-        <label class="form-label">ID usuário</label>
-        <input type="text" class="form-control" id="cod_usuario" name="cod_usuario" value="<?=$dados[0];?>" readonly>
-        <div id="helpIdCurso" class="form-text">
-            O ID do usuário é gerado automaticamente pelo sistema.
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="id_curso" class="form-label">ID curso</label>
-        <input type="text" class="form-control" id="id_curso" name="id_curso" value="<?=$dados[1];?>">
-        <div id="helpIdCurso" class="form-text">
-            O ID do curso realizado pelo usuário, em caso de duvidas consultar a página de cursos.
-        </div>
-      </div>
-      <div class="mb-3">
+  <form class="body row" method="post" action="main.php?p=usuarios/edit.php">
+      <div class="col-md-8 mb-3">
         <label for="nom_usuario" class="form-label">Nome do usuário</label>
-        <input type="text" class="form-control" id="nom_usuario" name="nom_usuario" value="<?=$dados[2];?>" maxlength="40">
+        <input type="text" required="" class="form-control" id="nom_usuario" name="nom_usuario" value="<?=$dados[1];?>" maxlength="60">
       </div>
-      <div class="mb-3">
+      <div class="col-md-4 mb-3">
         <label for="dtn_usuario" class="form-label">Data de nascimento</label>
-            <input type="date" class="form-control" id="dtn_usuario" name="dtn_usuario" value="<?=$dados[3];?>">
+            <input type="date" required="" class="form-control" id="dtn_usuario" name="dtn_usuario" value="<?=$dados[2];?>">
       </div>
-      <div class="mb-3">
-        <label for="sen_usuario" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="sen_usuario" name="sen_usuario" value="<?=$dados[4];?>" maxlength="10">
-        <div id="helpNomeUsuario" class="form-text">
-            Lembre-se de não compartilhar com ninguém.
-        </div>
+      <div class="col-md-8 mb-3">
+        <label for="log_usuario" class="form-label">E-mail do usuário</label>
+        <input type="email" required="" class="form-control" id="log_usuario" name="log_usuario" value="<?=$dados[3];?>" maxlength="60">
       </div>
-      <div class="mb-3">
-        <label for="per_usuario" class="form-label">Cargo</label>
+      <div class="col-md-4 mb-3">
+        <label for="sen_usuario" class="form-label">Senha (preencher novamente)</label>
+        <input type="password" required="" class="form-control" id="sen_usuario" name="sen_usuario" maxlength="20">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="per_usuario" class="form-label">Função</label>
         <select class="form-select" id="per_usuario" name="per_usuario" value="<?=$dados[5];?>">
-            <option selected value="0">Comum</option>
-            <option value="1">Administrador</option>
+            <option selected value="0">Aluno</option>
+            <option value="1">Professor</option>
         </select>
       </div>
-      <div class="mb-3">
+      <div class="col-md-6 mb-3">
         <label for="sts_usuario" class="form-label">Status</label>
         <select class="form-select" id="sts_usuario" name="sts_usuario" value="<?=$dados[6];?>">
             <option selected value="0">Inativo</option>
             <option value="1">Ativo</option>
         </select>
     </div>
-
+    <div class="col-md-6 mb-3">
     <button type="submit" class="btn btn-success">Salvar</button>
     <?php echo "<td><a href='main.php?p=usuarios/detalhes.php&id=".$dados[0]."' class='btn btn-secondary'>Cancelar</a></tr>" ?>
-  </form
-
+    </div>
+  </form>
 <?php 
     } 
 }

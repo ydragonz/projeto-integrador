@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION['logado'] == 1) {
+if($_SESSION['logado']) {
     require_once 'config.php';
 
     $conn = new mysqli($host, $user, $password, $dbname);
@@ -9,17 +9,19 @@ if($_SESSION['logado'] == 1) {
         die("Erro na conexão: ".$conn->connect_error);
     }
 
-    $sql = "SELECT * FROM pacientes ORDER BY cod_paciente";
+    $sql = "SELECT * FROM convenios ORDER BY id_convenio";
     $res = $conn->query($sql);
     ?>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Pacientes</h1>
+        <h1 class="h2">Convenios</h1>
         <?php
         if($_SESSION['sts_usuario']) {
+            ?>
+            <a href="main.php?p=convenios/new.php" type="button" class="btn btn-success">Cadastrar</a>
+            <?php
+        }
         ?>
-        <a href="main.php?p=pacientes/new.php" type="button" class="btn btn-success">Cadastrar</a>
-        <?php } ?>
     </div>
 
     <?php
@@ -35,71 +37,46 @@ if($_SESSION['logado'] == 1) {
         </div>
         <?php
     }
+    if(isset($_GET['del'])) {
+        $id = $_GET['del'];
+        $conn->query("DELETE FROM convenios WHERE id_convenio=$id");
+        ?>
+        <div class="alert alert-success" role="alert">
+            <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+            Convenio excluído com sucesso!</h2>
+            clique no botão abaixo para atualizar a página e ver os resultados.
+        </div>
+        <?php
+        echo "<td><a href='main.php?p=convenios/index.php' class='btn btn-secondary'>Atualizar</a></tr>";
+        ?> <br><br> <?php
+    }
     if($res->num_rows>0){
         ?>
         <div class="table-responsive">
-            <table class="table table-striped table-sm" id="tabela_pacientes">
-            <thead>
+            <table class="table table-striped table-sm" id="tabela_convenios">
+                <thead>
                     <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Cidade</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Data de nascimento</th>
-                    <th scope="col">Telefone</th>
                     <th></th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php
-                    if(!isset($_GET['busca'])) {
-                        while($row = $res->fetch_assoc()){
-                            $sexo="";
-                            if($row['sex_paciente']=="M") {
-                                $sexo="Masculino";
-                            }
-                            else {
-                                $sexo="Feminino";
-                            }
-                            echo "<tr>
-                                <td>".$row['cod_paciente']."</td>
-                                <td>".$row['nom_paciente']."</td>
-                                <td>".$sexo."</td>
-                                <td>".$row['cid_paciente']."</td>
-                                <td>".$row['uf_paciente']."</td>
-                                <td>".$row['dtn_paciente']."</td>
-                                <td>".$row['fone_paciente']."</td>"; 
-                            if($_SESSION['sts_usuario']) {
-                                echo "<td><a href='main.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>";
-                            }
-                            else {
-                                echo "<td></td></tr>";
-                            }
+                    while($row = $res->fetch_assoc()){
+                        echo "<tr>
+                            <td>".$row['nom_convenio']."</td>";
+                        if($_SESSION['sts_usuario']) {
+                            echo "<td><a href='main.php?p=convenios/edit.php&id=".$row['id_convenio']."' class='btn btn-primary btn-sm'>Editar</a>
+                                <a href='main.php?p=convenios/index.php&del=".$row['id_convenio']."' class='btn btn-danger btn-sm'>Excluir</a></td></tr>";
+                        }
+                        else {
+                            echo "<td></td></tr>";
                         }
                     }
-                    else {
-                        $id_busca = $_GET['busca'];
-                        $sql = "SELECT * FROM pacientes WHERE cod_paciente = '$id_busca'";
-                        $sexo="";
-                            if($row['sex_paciente']=="M") {
-                                $sexo="Masculino";
-                            }
-                            else {
-                                $sexo="Feminino";
-                            }
-                        echo "<tr>
-                                <td>".$row['cod_paciente']."</td>
-                                <td>".$row['nom_paciente']."</td>
-                                <td>".$sexo."</td>
-                                <td>".$row['cid_paciente']."</td>
-                                <td>".$row['uf_paciente']."</td>
-                                <td>".$row['dtn_paciente']."</td>
-                                <td>".$row['fone_paciente']."</td>
-                                <td><a href='main.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>"; 
-                    }
-                    
                     ?>
                 
                 </tbody>

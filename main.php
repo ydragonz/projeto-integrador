@@ -33,12 +33,12 @@
         <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
         <link rel="icon" href="imagens/unaerp_icon_mini.png">
-        <title>Bem-Estar no Shopping</title>
+        <title>Natação Unaerp</title>
     </head>
     <body>
 
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="main.php"><img src="imagens/unaerp_icon.png"> Bem-Estar</a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="main.php"><img src="imagens/unaerp_icon.png"> Natação Unaerp</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
 
@@ -89,9 +89,9 @@
 <script>
 $(document).ready( function () {
     $('#tabela_usuarios').DataTable();
-    $('#tabela_pacientes').DataTable();
-    $('#tabela_cursos').DataTable();
-    $('#tabela_exames').DataTable();
+    $('#tabela_alunos').DataTable();
+    $('#tabela_convenios').DataTable();
+    $('#tabela_provas').DataTable();
     $('#tabela_exames_paciente').DataTable();
 } );
 </script>

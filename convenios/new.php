@@ -9,9 +9,9 @@ if($_SESSION['logado'] == 1 && $_SESSION['sts_usuario'] == 1) {
       die("Erro de conexão: ".$conn->connect_error);
     }
     else {
-      $nom_curso = mysqli_real_escape_string($conn, $_POST['nom_curso']);
+      $nom_convenio = mysqli_real_escape_string($conn, $_POST['nom_convenio']);
 
-      $sql = "INSERT INTO cursos (id_curso, nom_curso) VALUES (NULL, '$nom_curso')";
+      $sql = "INSERT INTO convenios (nom_convenio) VALUES ('$nom_convenio')";
       if($conn->query($sql) === TRUE) {
         ?>
         <br>
@@ -20,11 +20,11 @@ if($_SESSION['logado'] == 1 && $_SESSION['sts_usuario'] == 1) {
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
           </svg>  
-          Curso criado com sucesso!</h2>
+          Convenio cadastrado com sucesso!</h2>
           clique no botão abaixo para atualizar a página e ver os resultados.
         </div>
         <?php
-        echo "<td><a href='main.php?p=cursos/index.php' class='btn btn-secondary'>Atualizar</a></tr>";
+        echo "<td><a href='main.php?p=convenios/index.php' class='btn btn-secondary'>Atualizar</a></tr>";
       }
       else {
         ?>
@@ -41,23 +41,16 @@ if($_SESSION['logado'] == 1 && $_SESSION['sts_usuario'] == 1) {
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Novo curso</h1>
+    <h1 class="h2">Novo convênio</h1>
 </div>
-<form action="main.php?p=cursos/new.php" method="post">
+<form action="main.php?p=convenios/new.php" method="post">
   <div class="mb-3">
-    <label class="form-label">ID curso</label>
-    <input type="text" class="form-control" disabled>
-    <div id="helpIdCurso" class="form-text">
-        O ID do curso é gerado automaticamente pelo sistema.
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="nom_curso" class="form-label">Nome curso</label>
-    <input type="text" class="form-control" id="nom_curso" name="nom_curso" maxlength="30">
+    <label for="nom_convenio" class="form-label">Nome do convênio</label>
+    <input type="text" class="form-control" id="nom_convenio" name="nom_convenio" maxlength="30">
   </div>
 
   <button type="submit" class="btn btn-success" name="enviar">Cadastrar</button>
-  <a class="btn btn-secondary" href="main.php?p=cursos/index.php" role="button">Voltar</a>
+  <a class="btn btn-secondary" href="main.php?p=convenios/index.php" role="button">Voltar</a>
 </form>
 
 <?php

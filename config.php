@@ -3,5 +3,5 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$dbname = "pi_db";
+$dbname = "natacaounaerp";
 ?>
