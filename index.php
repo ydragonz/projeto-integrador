@@ -17,11 +17,11 @@ if(isset($_POST['login_enviar'])) {
     <?php
   }
   else {
-    $sql = "SELECT log_usuario FROM usuarios WHERE log_usuario = '$login'";
+    $sql = "SELECT cod_usuario FROM usuarios WHERE cod_usuario = '$login'";
     $resultado = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($resultado) > 0) {
-      $sql = "SELECT * FROM usuarios WHERE log_usuario = '$login' AND sen_usuario = MD5('$senha')";
+      $sql = "SELECT * FROM usuarios WHERE cod_usuario = '$login' AND sen_usuario = MD5('$senha')";
       $resultado = mysqli_query($conn, $sql);
 
       if(mysqli_num_rows($resultado) == 1) {
@@ -71,26 +71,20 @@ if(isset($_POST['login_enviar'])) {
 
   <body class="text-center">
     <main class="form-signin">
-      <img class="mb-4" src="imagens/unaerp_extended.png" alt="Logo da UNAERP" width="144" height="70">
-      <h1 class="h3 mb-3 fw-normal">Faça login</h1>
-      <form class="body row" action="index.php" method="POST">
-        <div class="form-floating col-md-4 mb-3"></div>
-        <div class="form-floating col-md-4 mb-3">
-          <input name="cod_login" type="text" class="form-control" id="floatingInput" maxlength="60">
-          <label for="floatingInput">E-mail</label>
+      <form action="index.php" method="POST">
+        <img class="mb-4" src="imagens/unaerp_extended.png" alt="Logo da UNAERP" width="144" height="70">
+        <h1 class="h3 mb-3 fw-normal">Faça login</h1>
+
+        <div class="form-floating">
+          <input name="cod_login" type="text" class="form-control" id="floatingInput" placeholder="Exemplo: 1234" maxlength="6">
+          <label for="floatingInput">Código</label>
         </div>
-        <div class="form-floating col-md-4 mb-3"></div>
-        <div class="form-floating col-md-4 mb-3"></div>
-        <div class="form-floating col-md-4 mb-3">
+        <div class="form-floating">
           <input name="senha_login" type="password" class="form-control" id="floatingPassword" placeholder="Sua senha" maxlength="10">
           <label for="floatingPassword">Senha</label>
         </div>
-        <div class="form-floating col-md-4 mb-3"></div>
-        <div class="form-floating col-md-4 mb-3"></div>
-        <div class="form-floating col-md-4 mb-3">
-          <button name="login_enviar" class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
-        </div>
-        <div class="form-floating col-md-4 mb-3"></div>
+
+        <button name="login_enviar" class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
       </form>
     </main>
   </body>

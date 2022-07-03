@@ -40,47 +40,58 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario']) {
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Visualizando usuário</h1>
   </div>
-  <form class="body row" method="POST" action="main.php?p=usuarios/detalhes.php">
-    <div class="col-md-8 mb-3">
+  <form method="POST" action="main.php?p=usuarios/detalhes.php">
+  <div class="mb-3">
+    <div class="mb-3">
+      <label class="form-label">ID usuário</label>
+      <input type="text" class="form-control" id="cod_usuario" name="cod_usuario" value="<?=$dados[0];?>" readonly>
+      <div id="helpIdCurso" class="form-text">
+          O ID do usuário é gerado automaticamente pelo sistema.
+    </div>
+    </div>
+      <label for="id_curso" class="form-label">ID curso</label>
+      <input type="text" class="form-control" id="id_curso" name="id_curso" value="<?=$dados[1];?>" readonly>
+      <div id="helpIdCurso" class="form-text">
+          O ID do curso realizado pelo usuário, em caso de duvidas consultar a página de cursos.
+      </div>
+    </div>
+    <div class="mb-3">
       <label for="nom_usuario" class="form-label">Nome do usuário</label>
-      <input type="text" required="" class="form-control" id="nom_usuario" name="nom_usuario" value="<?=$dados[1];?>" readonly>
+      <input type="text" class="form-control" id="nom_usuario" name="nom_usuario" value="<?=$dados[2];?>" readonly>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="mb-3">
       <label for="dtn_usuario" class="form-label">Data de nascimento</label>
-          <input type="date" required="" class="form-control" id="dtn_usuario" name="dtn_usuario" value="<?=$dados[2];?>" readonly>
+          <input type="date" class="form-control" id="dtn_usuario" name="dtn_usuario" value="<?=$dados[3];?>" readonly>
     </div>
-    <div class="col-md-8 mb-3">
-      <label for="log_usuario" class="form-label">E-mail do usuário</label>
-      <input type="email" required="" class="form-control" id="log_usuario" name="log_usuario" value="<?=$dados[3];?>" readonly>
-    </div>
-    <div class="col-md-4 mb-3">
+    <div class="mb-3">
       <label for="sen_usuario" class="form-label">Senha</label>
-      <input type="password" required="" class="form-control" id="sen_usuario" name="sen_usuario" readonly>
+      <input type="password" class="form-control" id="sen_usuario" name="sen_usuario" value="<?=$dados[4];?>" readonly>
+      <div id="helpNomeUsuario" class="form-text">
+          Lembre-se de não compartilhar com ninguém.
+      </div>
     </div>
-    <div class="col-md-6 mb-3">
-      <label for="per_usuario" class="form-label">Função</label>
+    <div class="mb-3">
+      <label for="per_usuario" class="form-label">Cargo</label>
       <select class="form-select" id="per_usuario" name="per_usuario" value="<?=$dados[5];?>" readonly>
-          <option selected value="0">Usuário</option>
+          <option selected value="0">Comum</option>
           <option value="1">Administrador</option>
       </select>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="mb-3">
       <label for="sts_usuario" class="form-label">Status</label>
       <select class="form-select" id="sts_usuario" name="sts_usuario" value="<?=$dados[6];?>" readonly>
           <option selected value="0">Inativo</option>
           <option value="1">Ativo</option>
       </select>
     </div>
-    <div class="col-md-6 mb-3">
+
     <?php 
     if($_SESSION['per_usuario'] && $_SESSION['sts_usuario']) {
-      echo "<a href='main.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a>"; 
-      echo "<a> ";
-      echo "<a href='main.php?p=usuarios/detalhes.php&del=".$dados[0]."' class='btn btn-danger'>Excluir</a>";
+    echo "<a href='main.php?p=usuarios/edit.php&id=".$dados[0]."' class='btn btn-primary'>Editar</a>"; 
+    echo "<a href='main.php?p=usuarios/detalhes.php&del=".$dados[0]."' class='btn btn-danger'>Excluir</a>";
     }
     ?>
     <a class="btn btn-secondary" href="main.php?p=usuarios/index.php" role="button">Voltar</a>
-    </div>
   </form>
 
 <?php 

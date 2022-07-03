@@ -1,57 +1,62 @@
-CREATE DATABASE IF NOT EXISTS natacaounaerp;
-USE natacaounaerp;
+CREATE DATABASE IF NOT EXISTS pi_db;
+USE pi_db;
+
+
+CREATE TABLE cursos (
+    id_curso INT(4) AUTO_INCREMENT, 
+    nom_curso VARCHAR(30) NOT NULL,
+    PRIMARY KEY(id_curso)
+);
 
 CREATE TABLE usuarios (
     cod_usuario INT(6) AUTO_INCREMENT, 
-    nom_usuario VARCHAR(60) NOT NULL, 
+    id_curso INT(4), 
+    nom_usuario VARCHAR(40) NOT NULL, 
     dtn_usuario DATE NOT NULL, 
-    log_usuario VARCHAR(60) NOT NULL, 
     sen_usuario VARCHAR(32) NOT NULL, 
     per_usuario TINYINT(1) NOT NULL, 
     sts_usuario TINYINT(1) NOT NULL,
     PRIMARY KEY(cod_usuario)
 );
 
-CREATE TABLE convenios (
-	id_convenio INT(6) auto_increment,
-    nom_convenio varchar(20),
-    PRIMARY KEY(id_convenio)
+CREATE TABLE pacientes (
+    cod_paciente INT(8) AUTO_INCREMENT, 
+    nom_paciente VARCHAR(40) NOT NULL, 
+    sex_paciente CHAR(1) NOT NULL, 
+    end_paciente VARCHAR(40) NOT NULL, 
+    bai_paciente VARCHAR(25) NOT NULL, 
+    com_paciente VARCHAR(15), 
+    cep_paciente VARCHAR(8) NOT NULL,  
+    cid_paciente VARCHAR(35) NOT NULL,
+    uf_paciente VARCHAR(2) NOT NULL, 
+    dtn_paciente DATE NOT NULL, 
+    fone_paciente VARCHAR(11), 
+    email_paciente VARCHAR(50), 
+    pes_paciente NUMERIC(4,1) NOT NULL,  
+    alt_paciente NUMERIC(3,2) NOT NULL, 
+    fuma_paciente TINYINT(1) NOT NULL, 
+    bebe_paciente TINYINT(1) NOT NULL, 
+    hiper_paciente TINYINT(1) NOT NULL, 
+    diab_paciente TINYINT(1) NOT NULL, 
+    dac_paciente TINYINT(1) NOT NULL, 
+    doe_paciente VARCHAR(100), 
+    med_paciente TINYINT(1) NOT NULL, 
+    rem_paciente VARCHAR(100),
+    PRIMARY KEY(cod_paciente)
 );
 
-CREATE TABLE atletas (
-	id_atleta INT(6) auto_increment,
-    nom_atleta varchar(50) not null,
-    dti_atleta date not null,
-    dtn_atleta date not null,
-    nat_atleta varchar(50) not null,
-    nac_atleta varchar(20) not null,
-    rg_atleta varchar(12) not null,
-    cpf_atleta varchar(11) not null,
-    sex_atleta char(1) not null, 
-    end_atleta varchar(50) not null,
-    bai_atleta varchar(25) not null,
-    cep_atleta varchar(10) not null,
-    cid_atleta varchar(35) not null,
-    uf_atleta char(2) not null,
-    mae_atleta varchar(50) not null,
-    pai_atleta varchar(50),
-    clb_atleta varchar(30),
-    trb_atleta char(1),
-    anx_foto_atleta blob,
-    anx_rg_atleta blob,
-    anx_cpf_atleta blob,
-    anx_atm_atleta blob, 
-    anx_cpr_atleta blob,
-	id_convenio INT(6),
-    primary key(id_atleta)
+CREATE TABLE exames (
+    num_exame INT(10) AUTO_INCREMENT,
+    cod_paciente INT(8),
+    cod_usuario INT(6),
+    dta_exame DATE NOT NULL,
+    pad_exame INT(11) NOT NULL,
+    pas_exame INT(11) NOT NULL,
+    gli_exame INT(11) NOT NULL,
+    col_exame INT(11) NOT NULL,
+    PRIMARY KEY(num_exame)
 );
 
-create table provas (
-	id_prova int(6) auto_increment,
-    nom_prova varchar(30) not null, 
-    dt_prova date not null,
-    hor_prova varchar(5),
-    primary key(id_prova)
-);
-
-ALTER TABLE atletas ADD CONSTRAINT FOREIGN KEY (id_convenio) REFERENCES convenios(id_convenio);
+ALTER TABLE usuarios ADD FOREIGN KEY (id_curso) REFERENCES cursos(id_curso);
+ALTER TABLE exames ADD FOREIGN KEY (cod_paciente) REFERENCES pacientes(cod_paciente);
+ALTER TABLE exames ADD FOREIGN KEY (cod_usuario) REFERENCES usuarios(cod_usuario);

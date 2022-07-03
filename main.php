@@ -21,8 +21,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Site desenvolvido para o Projeto Integrador da quarta etapa de Engenharia de Software da UNAERP de 2022/1">
-        <meta name="author" content="Ana Laura Alves, Bruno Gabriel Gomide, Leonardo Bernardes de Oliveira e Nelson Jose Dias Mello">
+        <meta name="description" content="Site desenvolvido para o Projeto Integrador da terceira etapa de Engenharia de Software da UNAERP de 2021/2">
+        <meta name="author" content="Leonardo Bernardes de Oliveira, Sara Ferreira Fernandes e João Carneiro da Cunha">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
         <link href="css/dashboard.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -33,12 +33,12 @@
         <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
         <link rel="icon" href="imagens/unaerp_icon_mini.png">
-        <title>Natação Unaerp</title>
+        <title>Bem-Estar no Shopping</title>
     </head>
     <body>
 
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="main.php"><img src="imagens/unaerp_icon.png"> Natação Unaerp</a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="main.php"><img src="imagens/unaerp_icon.png"> Bem-Estar</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
 
@@ -89,9 +89,9 @@
 <script>
 $(document).ready( function () {
     $('#tabela_usuarios').DataTable();
-    $('#tabela_atletas').DataTable();
-    $('#tabela_convenios').DataTable();
-    $('#tabela_provas').DataTable();
+    $('#tabela_pacientes').DataTable();
+    $('#tabela_cursos').DataTable();
+    $('#tabela_exames').DataTable();
     $('#tabela_exames_paciente').DataTable();
 } );
 </script>

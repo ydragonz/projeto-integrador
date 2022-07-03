@@ -9,16 +9,16 @@ if($_SESSION['logado'] == 1) {
         die("Erro na conexão: ".$conn->connect_error);
     }
 
-    $sql = "SELECT * FROM atletas a INNER JOIN convenios c ON a.id_convenio=c.id_convenio ORDER BY nom_atleta";
+    $sql = "SELECT * FROM pacientes ORDER BY cod_paciente";
     $res = $conn->query($sql);
     ?>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Atletas</h1>
+        <h1 class="h2">Pacientes</h1>
         <?php
         if($_SESSION['sts_usuario']) {
         ?>
-        <a href="main.php?p=atletas/new.php" type="button" class="btn btn-success">Cadastrar</a>
+        <a href="main.php?p=pacientes/new.php" type="button" class="btn btn-success">Cadastrar</a>
         <?php } ?>
     </div>
 
@@ -38,17 +38,17 @@ if($_SESSION['logado'] == 1) {
     if($res->num_rows>0){
         ?>
         <div class="table-responsive">
-            <table class="table table-striped table-sm" id="tabela_atletas">
+            <table class="table table-striped table-sm" id="tabela_pacientes">
             <thead>
                     <tr>
-                    <th scope="col">Foto</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Sexo</th>
                     <th scope="col">Cidade</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Data de nascimento</th>
-                    <th scope="col">Data de inicio</th>
-                    <th scope="col">Convenio</th>
+                    <th scope="col">Telefone</th>
+                    <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,23 +57,22 @@ if($_SESSION['logado'] == 1) {
                     if(!isset($_GET['busca'])) {
                         while($row = $res->fetch_assoc()){
                             $sexo="";
-                            if($row['sex_atleta']=="M") {
+                            if($row['sex_paciente']=="M") {
                                 $sexo="Masculino";
                             }
                             else {
                                 $sexo="Feminino";
                             }
                             echo "<tr>
-                                <th scope='row'><img width='100px' src='".$row['anx_foto_atleta']."'></th>
-                                <td>".$row['nom_atleta']."</td>
+                                <td>".$row['cod_paciente']."</td>
+                                <td>".$row['nom_paciente']."</td>
                                 <td>".$sexo."</td>
-                                <td>".$row['cid_atleta']."</td>
-                                <td>".$row['uf_atleta']."</td>
-                                <td>".$row['dtn_atleta']."</td>
-                                <td>".$row['dti_atleta']."</td>
-                                <td>".$row['nom_convenio']."</td>"; 
+                                <td>".$row['cid_paciente']."</td>
+                                <td>".$row['uf_paciente']."</td>
+                                <td>".$row['dtn_paciente']."</td>
+                                <td>".$row['fone_paciente']."</td>"; 
                             if($_SESSION['sts_usuario']) {
-                                echo "<td><a href='main.php?p=atletas/detalhes.php&id=".$row['id_atleta']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>";
+                                echo "<td><a href='main.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>";
                             }
                             else {
                                 echo "<td></td></tr>";
@@ -82,23 +81,23 @@ if($_SESSION['logado'] == 1) {
                     }
                     else {
                         $id_busca = $_GET['busca'];
-                        $sql = "SELECT * FROM atletas WHERE id_atleta = '$id_busca'";
+                        $sql = "SELECT * FROM pacientes WHERE cod_paciente = '$id_busca'";
                         $sexo="";
-                            if($row['sex_atleta']=="M") {
+                            if($row['sex_paciente']=="M") {
                                 $sexo="Masculino";
                             }
                             else {
                                 $sexo="Feminino";
                             }
                         echo "<tr>
-                                <td>".$row['nom_atleta']."</td>
+                                <td>".$row['cod_paciente']."</td>
+                                <td>".$row['nom_paciente']."</td>
                                 <td>".$sexo."</td>
-                                <td>".$row['cid_atleta']."</td>
-                                <td>".$row['uf_atleta']."</td>
-                                <td>".$row['dtn_atleta']."</td>
-                                <td>".$row['dti_atleta']."</td>
-                                <td>".$row['nom_convenio']."</td>
-                                <td><a href='main.php?p=atletas/detalhes.php&id=".$row['id_atleta']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>"; 
+                                <td>".$row['cid_paciente']."</td>
+                                <td>".$row['uf_paciente']."</td>
+                                <td>".$row['dtn_paciente']."</td>
+                                <td>".$row['fone_paciente']."</td>
+                                <td><a href='main.php?p=pacientes/detalhes.php&id=".$row['cod_paciente']."' class='btn btn-secondary btn-sm'>Detalhes</a></td></tr>"; 
                     }
                     
                     ?>

@@ -9,16 +9,16 @@ if($_SESSION['logado']) {
         die("Erro na conexão: ".$conn->connect_error);
     }
 
-    $sql = "SELECT * FROM convenios ORDER BY id_convenio";
+    $sql = "SELECT * FROM cursos ORDER BY id_curso";
     $res = $conn->query($sql);
     ?>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Convenios</h1>
+        <h1 class="h2">Cursos</h1>
         <?php
         if($_SESSION['sts_usuario']) {
             ?>
-            <a href="main.php?p=convenios/new.php" type="button" class="btn btn-success">Cadastrar</a>
+            <a href="main.php?p=cursos/new.php" type="button" class="btn btn-success">Cadastrar</a>
             <?php
         }
         ?>
@@ -39,27 +39,27 @@ if($_SESSION['logado']) {
     }
     if(isset($_GET['del'])) {
         $id = $_GET['del'];
-        $conn->query("DELETE FROM convenios WHERE id_convenio=$id");
+        $conn->query("DELETE FROM cursos WHERE id_curso=$id");
         ?>
         <div class="alert alert-success" role="alert">
             <h2>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </svg>
-            Convenio excluído com sucesso!</h2>
+            Curso excluído com sucesso!</h2>
             clique no botão abaixo para atualizar a página e ver os resultados.
         </div>
         <?php
-        echo "<td><a href='main.php?p=convenios/index.php' class='btn btn-secondary'>Atualizar</a></tr>";
+        echo "<td><a href='main.php?p=cursos/index.php' class='btn btn-secondary'>Atualizar</a></tr>";
         ?> <br><br> <?php
     }
     if($res->num_rows>0){
         ?>
         <div class="table-responsive">
-            <table class="table table-striped table-sm" id="tabela_convenios">
+            <table class="table table-striped table-sm" id="tabela_cursos">
                 <thead>
                     <tr>
-                    <th scope="col">Código</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th></th>
                     </tr>
@@ -69,11 +69,11 @@ if($_SESSION['logado']) {
                     <?php
                     while($row = $res->fetch_assoc()){
                         echo "<tr>
-                            <td>".$row['id_convenio']."</td>
-                            <td>".$row['nom_convenio']."</td>";
+                            <td>".$row['id_curso']."</td>
+                            <td>".$row['nom_curso']."</td>";
                         if($_SESSION['sts_usuario']) {
-                            echo "<td><a href='main.php?p=convenios/edit.php&id=".$row['id_convenio']."' class='btn btn-primary btn-sm'>Editar</a>
-                                <a href='main.php?p=convenios/index.php&del=".$row['id_convenio']."' class='btn btn-danger btn-sm'>Excluir</a></td></tr>";
+                            echo "<td><a href='main.php?p=cursos/edit.php&id=".$row['id_curso']."' class='btn btn-primary btn-sm'>Editar</a>
+                                <a href='main.php?p=cursos/index.php&del=".$row['id_curso']."' class='btn btn-danger btn-sm'>Excluir</a></td></tr>";
                         }
                         else {
                             echo "<td></td></tr>";

@@ -9,24 +9,26 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario'] && $_SESSION['per_usuario']) 
         die("Erro de conexão: ".$conn->connect_error);
       }
       else {
+        $id_curso = mysqli_real_escape_string($conn, $_POST['id_curso']);
         $nom_usuario = mysqli_real_escape_string($conn, $_POST['nom_usuario']);
         $dtn_usuario = date('Y-m-d', strtotime($_POST['dtn_usuario']));
-        $log_usuario = mysqli_real_escape_string($conn, $_POST['log_usuario']);
         $sen_usuario = mysqli_real_escape_string($conn, $_POST['sen_usuario']);
         $per_usuario = mysqli_real_escape_string($conn, $_POST['per_usuario']);
         $sts_usuario = mysqli_real_escape_string($conn, $_POST['sts_usuario']);
 
         $sql = "insert into usuarios (
+          cod_usuario, 
+          id_curso, 
           nom_usuario, 
           dtn_usuario, 
-          log_usuario, 
           sen_usuario, 
           per_usuario, 
           sts_usuario) 
           values (
+          NULL, 
+          '$id_curso', 
           '$nom_usuario', 
           '$dtn_usuario', 
-          '$log_usuario', 
           MD5('$sen_usuario'), 
           '$per_usuario', 
           '$sts_usuario')";
@@ -62,41 +64,52 @@ if($_SESSION['logado'] && $_SESSION['sts_usuario'] && $_SESSION['per_usuario']) 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Novo usuário</h1>
   </div>
-  <form class="body row" action="main.php?p=usuarios/new.php" method="post">
-    <div class="col-md-8 mb-3">
+  <form action="main.php?p=usuarios/new.php" method="post">
+    <div class="mb-3">
+      <label class="form-label">Código usuário</label>
+      <input type="text" class="form-control" disabled>
+      <div id="helpIdCurso" class="form-text">
+          O ID do usuário é gerado automaticamente pelo sistema.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="id_curso" class="form-label">ID curso</label>
+      <input type="number" class="form-control" id="id_curso" name="id_curso">
+      <div id="helpIdCurso" class="form-text">
+          O ID do curso realizado pelo usuário, em caso de dúvidas consultar a página de cursos.
+      </div>
+    </div>
+    <div class="mb-3">
       <label for="nom_usuario" class="form-label">Nome do usuário</label>
-      <input type="text" required="" class="form-control" id="nom_usuario" name="nom_usuario" maxlength="60">
+      <input type="text" class="form-control" id="nom_usuario" name="nom_usuario" maxlength="40">
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="mb-3">
       <label for="dtn_usuario" class="form-label">Data de nascimento</label>
-          <input type="date" required="" class="form-control" id="dtn_usuario" name="dtn_usuario">
+          <input type="date" class="form-control" id="dtn_usuario" name="dtn_usuario">
     </div>
-    <div class="col-md-8 mb-3">
-      <label for="log_usuario" class="form-label">E-mail do usuário</label>
-      <input type="email" required="" class="form-control" id="log_usuario" name="log_usuario" maxlength="60">
-    </div>
-    <div class="col-md-4 mb-3">
+    <div class="mb-3">
       <label for="sen_usuario" class="form-label">Senha</label>
-      <input type="password" required="" class="form-control" id="sen_usuario" name="sen_usuario" maxlength="20">
+      <input type="password" class="form-control" id="sen_usuario" name="sen_usuario" maxlength="10">
+      <div id="helpNomeUsuario" class="form-text">
+          Lembre-se de não compartilhar com ninguém.
+      </div>
     </div>
-    <div class="col-md-6 mb-3">
-      <label for="per_usuario" class="form-label">Função</label>
+    <div class="mb-3">
+      <label for="per_usuario" class="form-label">Cargo</label>
       <select class="form-select" id="per_usuario" name="per_usuario">
-          <option selected value="0">Usuário</option>
+          <option selected value="0">Comum</option>
           <option value="1">Administrador</option>
       </select>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="mb-3">
       <label for="sts_usuario" class="form-label">Status</label>
       <select class="form-select" id="sts_usuario" name="sts_usuario">
           <option selected value="0">Inativo</option>
           <option value="1">Ativo</option>
       </select>
     </div>
-    <div class="col-md-6 mb-3">
     <button type="submit" class="btn btn-success" name="enviar">Cadastrar</button>
     <a class="btn btn-secondary" href="main.php?p=usuarios/index.php" role="button">Voltar</a>
-    </div>
   </form>
 
 <?php
